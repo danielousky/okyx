@@ -1,0 +1,115 @@
+
+
+# ---- RAILS NEW: ---- #
+# Seleccioné la versión de Ruby requerida:
+  rvm use 2.3.3
+# Creé el gemset:
+  rvm gemset create rails708
+# Instalé rails 7.0.8:
+  gem install rails -v 7.0.8
+# Generé una nueva applicación rails (7.0.8):
+  rails new socode -T -d postgresql
+
+# ---- CONFIGURACIÓN INICIAL DEL SERVIDOR: ---- #
+#(Opcionales):
+#sudo apt update
+#apt list --upgradable
+#sudo apt upgrade
+#reboot
+En Servidor: 
+sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git
+dokku apps:create socode
+dokku postgres:create socode_production
+dokku postgres:link socode_production socode
+cat ~/.ssh/authorized_keys | dokku ssh-keys:add admin
+
+dokku buildpacks:add socode https://github.com/heroku/heroku-buildpack-ruby.git
+
+En local: 
+git remote add dokku dokku@XX.XX.XX.XX:socode
+git push dokku master
+cat ~/.ssh/id_rsa.pub | ssh root@XX.XX.XX.XX dokku ssh-keys:add dokku
+bundle lock --add-platform x86_64-linux
+rails g controller inicio index
+git push dokku master
+
+
+Luego en el Servidor:
+rm /etc/nginx/sites-enabled/default
+dokku nginx:stop
+dokku nginx:start
+
+# ---- BOOTSTRAP: ----#
+# Instalé Bootstrap con Importmap haciendo una combinación de soluciones:
+# principalmente esta: https://dev.to/coorasse/rails-7-bootstrap-5-and-importmaps-without-nodejs-4g8
+# Previmente, agregué la gema Bootstrap respectiva al Gemfile y bundle:
+  gem "bootstrap", "~> 5.3.2"
+# Descomenté en el Gemfile la gema sassc-rails
+
+#En el app/assets/stylesheets/application.scss agregué bootstrap:
+  @import "bootstrap";
+#En el onfig/initializers/assets.rb agregar:
+  Rails.application.config.assets.precompile += %w( bootstrap.min.js popper.js )
+
+# Finalmente, agregué al application.js las 2 instrucciones para incorporar tanto Popper como Tooltips:
+en el archivo importmap.rb
+pin "popper", to: 'popper.js', preload: true
+pin "bootstrap", to: 'bootstrap.min.js', preload: true
+
+# AYUDA en esta etapa: https://bootrails.com/blog/rails-7-bootstrap-5-tutorial/#adding-custom-bootstrap-based-javascript-into-rails
+
+# let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))  
+# let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {  
+#   return new bootstrap.Popover(popoverTriggerEl)  
+# })  
+
+# const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+# const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+# ---- PROCFILE: ---- #  
+# Agregué el Procfile:
+web: bundle exec puma -C config/puma.rb
+release: rake db:migrate
+
+
+# ---- HAML: ----- #
+  https://github.com/haml/haml-rails
+
+  gem "haml-rails", "~> 2.0"
+
+
+# ---- FONT-AWESOME ----#
+
+# Instalé el font-awesome (GEMA) siguiendo las indicaciones abajo (No importmap):
+https://fontawesome.com/v6/docs/web/use-with/ruby-on-rails
+
+gem "font-awesome-sass", "~> 6.5.1"
+
+# Adicionalemente, para páginas más dinámicas con Turbolinks puede ser necesario esta:
+https://fontawesome.com/v6/docs/web/use-with/rails-turbolinks
+# No aplicado hasta ahora
+
+# Actualicé application.rb para set de locale, timezone and set false generators
+    config.generators do |generate|
+      generate.assets false
+      generate.helper false
+      generate.test_framework :test_unit, fixture: false, test: false
+      generate.system_tests = nil
+    end
+
+    config.i18n.default_locale = :es
+    config.time_zone = "Caracas"    
+
+# ---- ACTION TEXT -----#
+https://guides.rubyonrails.org/action_text_overview.html
+
+rails action_text:install
+
+
+import "trix"
+import "@rails/actiontext"
+
+
+
+
+# ---- DEVISE ----
