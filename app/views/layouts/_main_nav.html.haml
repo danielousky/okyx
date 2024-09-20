@@ -1,27 +1,31 @@
-%a.navbar-brand{:href => "/"}
-  %h3 Logo
-%button.navbar-toggler{"aria-controls" => "navbarTogglerDemo02", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarTogglerDemo02", "data-bs-toggle" => "collapse", :type => "button"}
-  %span.navbar-toggler-icon
-#navbarTogglerDemo02.collapse.navbar-collapse
-  - if false
-    %ul.navbar-nav.me-auto.mb-2.mb-lg-0
-      %li.nav-item
-        %a.nav-link.active{"aria-current" => "page", :href => "#"} Member
-      %li.nav-item
-        %a.nav-link.active{:href => "#"} Courses
-      %li.nav-item
-        %a.nav-link.active{"aria-current" => "page", :href => "#"} Blog
-      %li.nav-item
-        %a.nav-link.active{"aria-current" => "page", :href => "#"} Event
+%nav.navbar.navbar-expand-lg.bg-light
+  .container
+    %a.navbar-brand{:href => session_dashboard_path}
+      %h3 Logo
+    %button.navbar-toggler{"aria-controls" => "navbarTogglerDemo02", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarTogglerDemo02", "data-bs-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarTogglerDemo02.collapse.navbar-collapse
+      %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        %li.nav-item
+          = link_to t('activerecord.models.area.other')&.titleize, areas_path, class: 'nav-link'
+        %li.nav-item
+          = link_to t('activerecord.models.service.other')&.titleize, services_path, class: 'nav-link'          
+        - if false 
+          %li.nav-item
+            %a.nav-link.active{:href => "#"} Courses
+          %li.nav-item
+            %a.nav-link.active{"aria-current" => "page", :href => "#"} Blog
+          %li.nav-item
+            %a.nav-link.active{"aria-current" => "page", :href => "#"} Event
 
-- if user_signed_in?
-  = current_user.name
+    - if user_signed_in?
+      = current_user.name
 
-  = link_to destroy_user_session_path, data: {turbo_method: :delete}, class: 'float-end mx-3 btn btn-sm btn-warning' do
-    %i.fa.fa-right-from-bracket
-    Cerrar sesión
-- else
-  = link_to '/users/sign_in', class: 'float-end mx-3 my-1 btn btn-sm btn-outline-primary' do
-    %i.fa.fa-right-from-bracket
-    Inicir Sesión    
-    
+      = link_to destroy_user_session_path, data: {turbo_method: :delete}, class: 'float-end mx-3 btn btn-sm btn-warning' do
+        %i.fa.fa-right-from-bracket
+        Cerrar sesión
+    - else
+      = link_to '/users/sign_in', class: 'float-end mx-3 my-1 btn btn-sm btn-outline-primary' do
+        %i.fa.fa-right-from-bracket
+        Inicir Sesión    
+        

@@ -10,8 +10,10 @@
     = javascript_importmap_tags
   %body
     .container-flouid
-      = render '/layouts/main_nav'
+      %nav.navbar.navbar-expand-lg.bg-light
+        .container
+          = render '/layouts/invite_nav'
+
       = render "/layouts/flashes"
-      .container.mt-2
-        = yield
+      = yield
     = render '/layouts/footer'

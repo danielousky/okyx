@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
+  resources :areas
+  resources :services
+
   devise_for :users
+
+  get 'dashboard/index', as: 'session_dashboard'
   get 'inicio/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

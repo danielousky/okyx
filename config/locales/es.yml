@@ -270,9 +270,17 @@ es:
       models:
 
     models:
-    
+      area:
+        one: 'Área'
+        other: 'Áreas'
+      service:
+        one: 'Servicio'
+        other: 'Servicios'        
     attributes:
-
+      area:
+        name: Nombre
+      service:
+        name: Nombre        
     scopes:        
       <<: *errors
   flash:

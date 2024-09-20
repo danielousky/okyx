@@ -1,0 +1,23 @@
+%h1= t("activerecord.models.#{controller_name.singularize}.other")&.titleize
+
+%table.table.table-striped.table-hover.border.m-2.p-1
+  %thead
+    %tr
+      %th Nombre
+      %th Descripcion
+      %th
+      %th
+      %th
+
+  %tbody
+    - @areas.each do |area|
+      %tr
+        %td= area.name
+        %td= area.description
+        %td= link_to 'Ver', area
+        %td= link_to 'Editar', edit_area_path(area)
+        %td= link_to 'Eliminar', area, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'Nueva Area', new_area_path, class: 'btn btn-sm btn-primary'
