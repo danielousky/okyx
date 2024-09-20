@@ -13,13 +13,15 @@
         %a.nav-link.active{"aria-current" => "page", :href => "#"} Blog
       %li.nav-item
         %a.nav-link.active{"aria-current" => "page", :href => "#"} Event
-  %form
-    - if user_signed_in?
-      = current_user.name
 
-      = link_to destroy_user_session_path, data: {turbo_method: :delete}, class: 'float-end mx-3 btn btn-sm btn-warning' do
-        %i.fa.fa-right-from-bracket
-        Cerrar sesión
-    - else
-      %a.btn.btn-outline-primary.mr-2{:href => '/users/sign_in'} Entrar
+- if user_signed_in?
+  = current_user.name
+
+  = link_to destroy_user_session_path, data: {turbo_method: :delete}, class: 'float-end mx-3 btn btn-sm btn-warning' do
+    %i.fa.fa-right-from-bracket
+    Cerrar sesión
+- else
+  = link_to '/users/sign_in', data: {turbo_method: :delete}, class: 'float-end mx-3 my-1 btn btn-sm btn-outline-primary' do
+    %i.fa.fa-right-from-bracket
+    Inicir Sesión    
     
