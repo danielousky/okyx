@@ -1,0 +1,7 @@
+.float-end.btn-group{role: :group}
+    = link_to service, type: :button, class: 'btn btn-secondary' do
+        %i.fa.fa-search
+    = link_to edit_service_path(service), type: :button, class: 'btn btn-primary' do
+        %i.fa.fa-pencil
+    = link_to service, type: :button, class: 'btn btn-danger', data: {turbo_method: :delete, confirm: '¿Está completamente seguro?'} do
+        %i.fa.fa-trash

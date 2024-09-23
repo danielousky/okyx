@@ -281,6 +281,10 @@ es:
         name: Nombre
       service:
         name: Nombre        
+        description: Descripción        
+        areas: Áreas        
+        location: Ubicación        
+        profile: Imagen Perfil
     scopes:        
       <<: *errors
   flash:

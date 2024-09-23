@@ -1,8 +1,16 @@
-%p#notice= notice
 
+%p= image_tag @service.profile, size: '35'
 %p
   %b Name:
   = @service.name
+
+%p 
+  %b Áreas:
+  = @service.areas.map(&:name)
+
+%p
+  %b Ubicación:
+  = @service.location
 
 = link_to 'Edit', edit_service_path(@service)
 \|
