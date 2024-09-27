@@ -8,12 +8,13 @@
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
+    = favicon_link_tag 'own_resources/logo_icon.svg'
   %body
     .container-flouid
       %nav.navbar.navbar-expand-lg.bg-light
         .container
           = render '/layouts/invite_nav'
-
       = render "/layouts/flashes"
-      = yield
-    = render '/layouts/footer'
+      .container.mt-2
+        = yield
+        = render '/layouts/footer'
