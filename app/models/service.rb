@@ -14,6 +14,15 @@ class Service < ApplicationRecord
         attachable.variant :thumb, resize_to_limit: [100, 100]
     end
 
+    def self.venezuela
+        require 'json'
+        file = File.read("#{Rails.root}/public/venezuela.json")
+        JSON.parse(file)
+    end    
+    def self.states
+        venezuela.map{|a| a["estado"]}
+    end
+
     # def profile_as_thumb
     #     begin
     #       profile.variant(resize_to_limit: [100, 100]).processed

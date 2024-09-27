@@ -8,6 +8,6 @@
     = f.rich_text_area :description, required: true
     = f.association :areas, as: :check_boxes, input_html: {class: 'btn me-2 btn-outline-secondary rounded-0'}#, label_html: { class: "btn btn-secondary" } #, wrapper_html: { class: "mt-3" } 
     = f.input :profile
-    = f.input :location, collection: [ "Miranda", "Maracay", "La Guaira", "Gran Caracas"]
+    = f.input :location, collection: Service.states
   .form-actions
     = f.button :submit, class: 'btn btn-success'
