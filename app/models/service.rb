@@ -3,7 +3,7 @@ class Service < ApplicationRecord
     accepts_nested_attributes_for :areas, reject_if: ->(attributes){ attributes['name'].blank? }, allow_destroy: true
 
 	has_rich_text :description
-	validates :name, presence: true
+	validates :name, presence: true, uniqueness: {case_sensitive: false}
 	validates :details, presence: true
 	# validates :description, presence: true
 	validates :areas, presence: true

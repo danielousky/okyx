@@ -35,18 +35,35 @@
               %i.far.fa-heart.text-dark
         / Content
         .truncate
-          = service.details
+          = service.details.truncate(400)
         / Info
         %ul.list-inline.mb-2
           %li.list-inline-item.text-muted.text-small.mb-1.mb-sm-0
             %i.far.fa-clock.text-danger.me-2>
             = "Creado hace #{distance_of_time_in_words(Time.zone.now, service.created_at)}"
           %li.list-inline-item.text-muted.text-small.mb-1.mb-sm-0
-            %i.fas.fa-table.text-orange.me-2>
+            %i.fas.fa-table.text-orange.me-2
             65 Búsquedas
+          - if service.contact_phone
+            - name_phone = number_to_phone service.contact_phone, area_code: true, country_code: 58
+            %li.list-inline-item
+              = link_to 'javascript:void(0)', onclick: "$('#phone#{service.id}').removeClass('d-none d-block'); $(this).parent().addClass('d-none')", class: 'phone' do
+                %i.fas.fa-phone.text-success.me-2
+            %li.list-inline-item.d-none.badge.text-success{id: "phone#{service.id}"}              
+              = link_to "https://wa.me/58#{service.contact_phone}?text=Hola,%20te%20encontré%20por%20Okyx.%20Tengo%20interés%20en...", {target: '_blank', referrerpolicy: "origin-when-cross-origin", class: 'btn btn-sm btn-success'} do
+                %i.fa-brands.fa-whatsapp
+                = name_phone
+          - if service.link
+            %li.list-inline-item
+              = link_to 'javascript:void(0)', onclick: "$('#link#{service.id}').toggleClass('d-none d-block'); $(this).parent().addClass('d-none')" do
+                %i.fas.fa-link.text-primary.me-2              
+            %li.list-inline-item  
+              %div.badge.text-primary.d-none{id: "link#{service.id}"}
+                = link_to 'Enlace', service.link, {target: '_blank', rel: 'noopener noreferrer', class: 'btn btn-sm btn-primary'}
+
           - if false
             %li.list-inline-item.text-dark
-              %i.fas.fa-signal.text-success.me-2>
+              %i.fas.fa-signal.text-success.me-2
               All level
           %li= render partial: 'options_link', locals: {service: service}
         / Rating
