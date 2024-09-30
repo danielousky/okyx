@@ -282,9 +282,12 @@ es:
       service:
         name: Nombre        
         description: Descripción        
+        details: Detalles        
         areas: Áreas        
         location: Ubicación        
         profile: Imagen Perfil
+        contact_phone: Número Telefónico de Contacto
+        link: Enlace
     scopes:        
       <<: *errors
   flash:

@@ -4,7 +4,8 @@ class Service < ApplicationRecord
 
 	has_rich_text :description
 	validates :name, presence: true
-	validates :description, presence: true
+	validates :details, presence: true
+	# validates :description, presence: true
 	validates :areas, presence: true
 	validates :location, presence: true
 	validates :profile, presence: true

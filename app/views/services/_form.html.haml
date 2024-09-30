@@ -4,10 +4,36 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :name
-    = f.rich_text_area :description, required: true
+    = f.input :name, required: true
+    = f.input :details, as: :text
+    =# f.rich_text_area :description, required: true
     = f.association :areas, as: :check_boxes, input_html: {class: 'btn me-2 btn-outline-secondary rounded-0'}#, label_html: { class: "btn btn-secondary" } #, wrapper_html: { class: "mt-3" } 
     = f.input :profile
+    = f.input :contact_phone, required: true, as: :tel, input_html: {class: 'onlyNumbers maxSize'}
+    = f.hint 'Solo números perimitidos. Empezar con 0'
+    %br
+    - if false
+      - operators_code = ['0412', '0414', '0424', '0416','0426']
+      - if phone = @service.contact_phone
+        - @operator_code = phone[0..3] 
+        - @number_phone = phone[4..10] 
+      .input-group
+        = select_tag 'phone_operator', options_for_select(operators_code, @operator_code), class: 'phone form-control col-4 required', required: true, include_blank: 'Código Operadora'
+        = text_field_tag 'phone_complement', @number_phone, placeholder: 'Complemento', class: 'phone form-control upcase col-6 onlyNumbers maxSize', required: true
+
+    =# hidden_field 'service_contact_phone', @service.contact_phone
+
+    =# f.inp :contact_phone
+    = f.input :link
     = f.input :location, collection: Service.states
   .form-actions
     = f.button :submit, class: 'btn btn-success'
+
+- if false
+  :javascript
+    const selectElement = document.querySelector(".phone");
+    const result = document.querySelector("#service_contact_phone");
+
+    selectElement.addEventListener("change", (event) => {
+      result.textContent = `${event.target.value}`;
+    });
