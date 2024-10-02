@@ -1,10 +1,7 @@
 %a.navbar-brand{:href => "/"}
   = image_tag 'own_resources/logo.svg', width: 120, class: 'm-0 p-0'
-%button.navbar-toggler{"aria-controls" => "navbarTogglerDemo02", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarTogglerDemo02", "data-bs-toggle" => "collapse", :type => "button"}
-  %span.navbar-toggler-icon
-#navbarTogglerDemo02.collapse.navbar-collapse
 
-= link_to '/users/sign_in', class: 'float-end mx-3 my-1 btn btn-sm btn-outline-primary' do
+= link_to '/users/sign_in', class: 'my-1 rounded-0 btn btn-sm btn-outline-primary float-end' do
   %i.fa.fa-right-from-bracket
   Inicir Sesión    
-    
+      
