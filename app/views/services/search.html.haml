@@ -1,0 +1,11 @@
+- if @services.any?
+    - clase = 'alert-success'
+- else
+    - clase = 'alert-danger'
+
+%h4.alert{class: clase}= "#{@services.count} #{'resultado'.pluralize(@services.count)} #{'entontrado'.pluralize(@services.count)}"
+
+= render partial: 'services/search'
+.table.table-striped.table-hover.mt-3
+    - @services.each do |service|
+        = render partial: 'services/show_list', locals: {service: service}

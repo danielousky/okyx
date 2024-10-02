@@ -2,6 +2,5 @@
   = t('activerecord.models.service.other')&.titleize
   = link_to 'Agregar Nuevo Servicio', new_service_path, class: 'btn btn-lg btn-primary rounded-0'
 
-.table.table-striped.table-hover.mt-3
-  - @services.each do |service|
-    = render partial: 'services/show_list', locals: {service: service}
+= render partial: '/services/list'
+

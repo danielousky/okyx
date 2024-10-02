@@ -29,7 +29,7 @@
           %h4.card-title.mb-0
             = service.name
           / Wishlist icon
-          = render partial: 'areas_items', locals: {areas: service.areas}
+          = render partial: '/services/areas_items', locals: {areas: service.areas}
           - if false
             %a{:href => "#"}
               %i.far.fa-heart.text-dark
@@ -65,7 +65,8 @@
             %li.list-inline-item.text-dark
               %i.fas.fa-signal.text-success.me-2
               All level
-          %li= render partial: 'options_link', locals: {service: service}
+          - if user_signed_in?
+            %li= render partial: '/services/options_link', locals: {service: service}
         / Rating
         - if false
           %ul.list-inline.mb-0

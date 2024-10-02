@@ -1,0 +1,6 @@
+= form_tag("/services/search", class: 'form-horizontal', method: :get) do
+  .content-fluid.p-4
+    .input-group
+
+      = text_field_tag :search, nil, {class: 'form-control rounded-0', "aria-describedby" => "search-addon", "aria-label" => "Search", :placeholder => "Buscar Servicio", :type => "search"}
+      %button.btn.btn-success.rounded-0{"data-mdb-ripple-init" => "", :type => "submit"} Buscar
