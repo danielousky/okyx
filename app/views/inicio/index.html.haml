@@ -1,22 +1,9 @@
-- if false
-  %h1.alert.alert-info Inicio#index
-  %p Find me in app/views/inicio/index.html.erb
-
-  %i.fa-brands.fa-font-awesome
-  %i.fa-solid.fa-user-secret
-
-
-  = icon('fa-solid', 'user-secret', class:"fa-7x, fa-shake")
-  
-  = icon('fab', 'font-awesome', 'Font Awesome', id: 'my-icon', class: 'fa-beat')
-
 %h4.alert.alert-success.text-center.mb-3
   = icon('fa-solid', 'user-secret', class:"fa-7x, fa-shake")
   Bienvenido a OKYX!!!
 
-
-- if @services
+= render partial: 'search/form'
+- if params[:search]
   = render partial: '/search/index'
 - else
-  = render partial: 'search/form'
   = render partial: 'layouts/carousel'
