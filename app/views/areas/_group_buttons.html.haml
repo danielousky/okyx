@@ -1,8 +1,15 @@
-.position-relative
-    .position-absolute.top-50.start-50.translate-middle
-        .btn-group.btn-group-sm{"aria-label" => "Areas options", :role => "group"}
-            - Area.all.each do |area|
-                - active = (params[:area_id]&.eql? area.id.to_s) ? 'active' : ''
-                - url = params[:search] ? "/?area_id=#{area.id}&search=#{params[:search]}" : "/?area_id=#{area.id}"
-                = link_to area.name.titleize, url, class: "btn btn-outline-primary #{active}"
+- if false 
+    .position-relative
+        .position-absolute.top-50.start-50.translate-middle
+            .btn-group.btn-group-sm{"aria-label" => "Areas options", :role => "group"}
+                - Area.all.each do |area|
+                    - active = (params[:area_id]&.eql? area.id.to_s) ? 'active' : ''
+                    - url = params[:search] ? "/?area_id=#{area.id}&search=#{params[:search]}" : "/?area_id=#{area.id}"
+                    = link_to area.name.titleize, url, class: "btn btn-outline-primary #{active}"
 
+.table-responsive.text-center
+    %table.btn-group.btn-group-sm{"aria-label" => "Areas options", :role => "group"}
+        - Area.all.each do |area|
+            - active = (params[:area_id]&.eql? area.id.to_s) ? 'active' : ''
+            - url = params[:search] ? "/?area_id=#{area.id}&search=#{params[:search]}" : "/?area_id=#{area.id}"
+            = link_to area.name.titleize, url, class: "btn btn-outline-primary #{active}"
