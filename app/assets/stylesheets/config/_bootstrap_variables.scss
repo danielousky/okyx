@@ -1,0 +1,34 @@
+// This is where you override default Bootstrap variables
+// 1. All Bootstrap variables are here => https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss
+// 2. These variables are defined with default value (see https://robots.thoughtbot.com/sass-default)
+// 3. You can override them below!
+
+// General style
+$font-family-sans-serif:  $body-font;
+$headings-font-family:    $headers-font;
+$body-bg:                 $light-gray;
+$font-size-base: 1rem;
+
+// Colors
+$body-color: $gray;
+
+$primary:    $cool-primary;
+$success:    $cool-success;
+$info:       $cool-info;
+$danger:     $cool-danger;
+$warning:    $cool-warning;
+$light:      $cool-light;
+
+// Buttons & inputs' radius
+$border-radius:    1px;
+$border-radius-lg: 1px;
+$border-radius-sm: 1px;
+
+// Override other variables below!
+
+// Force light color for top-nav links
+$navbar-dark-color: white;
+
+// Contrast ratio used to calculate color for text within elements (ie. buttons)
+// https://getbootstrap.com/docs/5.0/customize/sass/#color-contrast
+$min-contrast-ratio: 2;

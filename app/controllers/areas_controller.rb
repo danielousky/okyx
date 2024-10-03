@@ -8,6 +8,7 @@ class AreasController < ApplicationController
 
   # GET /areas/1 or /areas/1.json
   def show
+    @services = @area.services
   end
 
   # GET /areas/new

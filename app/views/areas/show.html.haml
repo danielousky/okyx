@@ -1,12 +1,10 @@
-%p#notice= notice
-
-%p
-  %b Name:
+%p.bg-info.text-center.p-2
   = @area.name
-%p
-  %b Description:
+%p.text-muted.text-center
   = @area.description
 
-= link_to 'Edit', edit_area_path(@area)
-\|
-= link_to 'Back', areas_path
+= render partial: '/services/list'
+- if user_signed_in?
+  = link_to 'Editar', edit_area_path(@area)
+  \|
+  = link_to 'Regresar', areas_path

@@ -271,8 +271,8 @@ es:
 
     models:
       area:
-        one: 'Área'
-        other: 'Áreas'
+        one: 'Categoría'
+        other: 'Categorias'
       service:
         one: 'Servicio'
         other: 'Servicios'        

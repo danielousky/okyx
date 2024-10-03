@@ -10,6 +10,9 @@ class Service < ApplicationRecord
 	validates :location, presence: true
 	validates :profile, presence: true
 
+    scope :search_by, -> (value) {where("name ILIKE '%#{value}%' OR details ILIKE '%#{value}%'")}
+    scope :names, -> {select(:name).map{|ar| ar.name}}
+
     has_one_attached :profile do |attachable|
         attachable.variant :icon, resize_to_limit: [35, 35]
         attachable.variant :thumb, resize_to_limit: [100, 100]
