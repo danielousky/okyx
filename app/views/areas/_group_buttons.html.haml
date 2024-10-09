@@ -6,10 +6,10 @@
                     - active = (params[:area_id]&.eql? area.id.to_s) ? 'active' : ''
                     - url = params[:search] ? "/?area_id=#{area.id}&search=#{params[:search]}" : "/?area_id=#{area.id}"
                     = link_to area.name.titleize, url, class: "btn btn-outline-primary #{active}"
-
-.table-responsive.text-center
-    %table.btn-group.btn-group-sm{"aria-label" => "Areas options", :role => "group"}
-        - Area.all.each do |area|
-            - active = (params[:area_id]&.eql? area.id.to_s) ? 'active' : ''
-            - url = params[:search] ? "/?area_id=#{area.id}&search=#{params[:search]}" : "/?area_id=#{area.id}"
-            = link_to area.name.titleize, url, class: "btn btn-outline-primary #{active}"
+#categories.d-none
+    .table-responsive.text-center
+        %table.btn-group.btn-group-sm{"aria-label" => "Areas options", :role => "group"}
+            - Area.all.each do |area|
+                - active = (params[:area_id]&.eql? area.id.to_s) ? 'active' : ''
+                - url = params[:search] ? "/?area_id=#{area.id}&search=#{params[:search]}" : "/?area_id=#{area.id}"
+                = link_to area.name.titleize, url, class: "btn btn-outline-primary m-1 #{active}"

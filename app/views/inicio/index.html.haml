@@ -2,8 +2,8 @@
   = icon('fa-solid', 'user-secret', class:"fa-7x, fa-shake")
   Bienvenido a OKYX!!!
 %br
-= render partial: '/areas/group_buttons'# if params[:search]
 = render partial: 'search/form'
+= render partial: '/areas/group_buttons'# if params[:search]
 - if params[:search] or params[:area_id]
   = render partial: '/search/index'
 - else

@@ -4,3 +4,4 @@
       = hidden_field_tag :area_id, params[:area_id] if params[:area_id]
       = text_field_tag :search, params[:search], {class: 'form-control rounded-0', "aria-describedby" => "search-addon", "aria-label" => "Search", :placeholder => "Buscar Servicio", :type => "search"}
       %button.btn.btn-success.rounded-0{"data-mdb-ripple-init" => "", :type => "submit"} Buscar
+      %a.btn.btn-warning.ms-2.rounded-0{onclick: "$('#categories').toggleClass('d-none')"} Categorías
