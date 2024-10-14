@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: services
+#
+#  id            :bigint           not null, primary key
+#  contact_phone :string
+#  details       :string
+#  link          :string
+#  location      :string
+#  name          :string           not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
 class Service < ApplicationRecord
     has_and_belongs_to_many :areas
     accepts_nested_attributes_for :areas, reject_if: ->(attributes){ attributes['name'].blank? }, allow_destroy: true

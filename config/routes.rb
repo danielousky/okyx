@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :services
 
   devise_for :users, controllers: { sessions: 'sessions' }
+  # devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'registrations' }
 
   get 'dashboard/index', as: 'session_dashboard'
   get 'inicio/index'

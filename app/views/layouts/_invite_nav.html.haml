@@ -1,7 +1,4 @@
 %a.navbar-brand{:href => "/"}
   = image_tag 'own_resources/logo.svg', width: 120, class: 'm-0 p-0'
 
-= link_to '/users/sign_in', class: 'my-1 rounded-0 btn btn-sm btn-outline-primary float-end' do
-  %i.fa.fa-right-from-bracket
-  Inicir Sesión    
-      
+= render '/layouts/session_links'

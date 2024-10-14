@@ -276,6 +276,9 @@ es:
       service:
         one: 'Servicio'
         other: 'Servicios'        
+      user:
+        one: Usuario
+        other: Usuarios
     attributes:
       area:
         name: Nombre
@@ -288,6 +291,12 @@ es:
         profile: Imagen Perfil
         contact_phone: Número Telefónico de Contacto
         link: Enlace
+      user:
+        name: Nombre
+        email: Correo Electrónico
+        password: Contraseña
+        password_confirmation: Confirmar Contraseña
+        remember_me: Recuérdame        
     scopes:        
       <<: *errors
   flash:
