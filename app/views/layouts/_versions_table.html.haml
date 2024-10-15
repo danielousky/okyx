@@ -6,13 +6,11 @@
         %tr
           %th Descripción
           %th Quien
-          %th Anterior
           %th Cuándo
       %tbody
         - versions.order(created_at: :desc).each do |ver|
           %tr
             %td= ver.event
-            %td= ver.previous_version
             %td= User.where(id: ver.whodunnit).first&.name
             %td= l(ver.created_at)
 
