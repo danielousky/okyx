@@ -1,0 +1,21 @@
+
+%p= image_tag @service.profile, size: '35'
+%p
+  %b nombre:
+  = @service.name
+
+%p 
+  %b Número de Contacto:
+  = number_to_phone @service.contact_phone, area_code: true, country_code: 58
+%p 
+  %b Áreas:
+  = @service.areas.map(&:name)
+
+
+%p
+  %b Ubicación:
+  = @service.location
+
+= link_to 'Edit', edit_service_path(@service)
+\|
+= link_to 'Back', services_path

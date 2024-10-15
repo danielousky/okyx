@@ -10,11 +10,21 @@
 #  name          :string           not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  client_id     :bigint
+#
+# Indexes
+#
+#  index_services_on_client_id  (client_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (client_id => clients.user_id)
 #
 class Service < ApplicationRecord
     has_and_belongs_to_many :areas
     accepts_nested_attributes_for :areas, reject_if: ->(attributes){ attributes['name'].blank? }, allow_destroy: true
 
+    belongs_to :client, optional: true
 	has_rich_text :description
 	validates :name, presence: true, uniqueness: {case_sensitive: false}
 	validates :details, presence: true

@@ -6,9 +6,12 @@
       %span.navbar-toggler-icon
     #navbarTogglerDemo02.collapse.navbar-collapse
       %ul.navbar-nav.me-auto.mb-2.mb-lg-0
-        %li.nav-item
-          = link_to t('activerecord.models.area.other')&.titleize, areas_path, class: 'nav-link'
-        %li.nav-item
+        - if current_user.admin
+          - @active = @controller_name.eql? 'area' ? 'active' : ''
+          %li.nav-item{class: @active}
+            = link_to t('activerecord.models.area.other')&.titleize, areas_path, class: 'nav-link'
+        - @active = @controller_name.eql? 'area' ? 'active' : ''
+        %li.nav-item{class: @active}
           = link_to t('activerecord.models.service.other')&.titleize, services_path, class: 'nav-link'          
         - if false 
           %li.nav-item

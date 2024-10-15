@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_10_140344) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_15_120042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -90,6 +90,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_10_140344) do
     t.string "details"
     t.string "contact_phone"
     t.string "link"
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_services_on_client_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -116,4 +118,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_10_140344) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "admins", "users"
   add_foreign_key "clients", "users"
+  add_foreign_key "services", "clients", primary_key: "user_id"
 end

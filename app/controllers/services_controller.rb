@@ -1,9 +1,10 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: %i[ show edit update destroy ]
+  before_action :verify_data!
 
   # GET /services or /services.json
   def index
-    @services = Service.all
+    @services = current_user&.client ? current_user&.client&.services : Service.all
   end
 
   # GET /services/1 or /services/1.json
@@ -23,6 +24,7 @@ class ServicesController < ApplicationController
   def create
   
     @service = Service.new(service_params)
+    @service.client_id = current_user&.client&.id if current_user&.client
 
     respond_to do |format|
       if @service.save

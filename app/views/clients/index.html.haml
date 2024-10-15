@@ -1,0 +1,6 @@
+%h1
+  = t('activerecord.models.service.other')&.titleize
+  = link_to 'Agregar Nuevo Servicio', new_service_path, class: 'btn btn-lg btn-primary rounded-0'
+
+= render partial: '/services/list'
+

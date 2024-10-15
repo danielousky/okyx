@@ -1,7 +1,8 @@
 
 %h1.text-center Principal
 .position-absolute.top-50.start-50.translate-middle
-    = link_to areas_path, class: 'btn btn-lg btn-primary' do
-        = t('activerecord.models.area.other')&.titleize
+    - if current_user.admin
+        = link_to areas_path, class: 'btn btn-lg btn-primary' do
+            = t('activerecord.models.area.other')&.titleize
     = link_to services_path, class: 'btn btn-lg btn-primary ms-3' do
         = t('activerecord.models.service.other')&.titleize

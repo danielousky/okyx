@@ -1,8 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def create
-    p "Estamos aquí Ahora".center(1000, '#')
-    1/0
+    super
+
     # if Period.open_enrollment_leveling.any? or Period.open_enrollment_new.any?
     #   super
     # else
@@ -14,8 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    flash[:danger] = 'after_sign_up_path_for'
-    1/0
+    Client.create(user_id: resource.id)
   	# if params[:student] and Student.create(user_id: resource.id)
 
   	# 	student_session_index_path

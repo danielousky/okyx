@@ -29,9 +29,23 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :validatable, :trackable, :timeoutable, :registerable
 
+  has_one :admin, inverse_of: :user, foreign_key: :user_id, dependent: :destroy
+  accepts_nested_attributes_for :admin
+
+  has_one :client, inverse_of: :user, foreign_key: :user_id, dependent: :destroy
+  accepts_nested_attributes_for :client
+
   def name
     "#{first_name} #{last_name}"
   end
 
+  has_one_attached :profile do |attachable|
+    attachable.variant :icon, resize_to_limit: [35, 35]
+    attachable.variant :thumb, resize_to_limit: [100, 100]
+  end  
 
+  def data_incompleted?
+    first_name.blank? or last_name.blank? or email.blank?
+  end
+  
 end

@@ -273,6 +273,9 @@ es:
       area:
         one: 'Categoría'
         other: 'Categorias'
+      client:
+        one: Cliente
+        other: Clientes
       service:
         one: 'Servicio'
         other: 'Servicios'        
@@ -293,6 +296,10 @@ es:
         link: Enlace
       user:
         name: Nombre
+        first_name: Nombres
+        last_name: Apellidos
+        number_phone: Número Telefónico
+        profile: Foto de Perfil
         email: Correo Electrónico
         password: Contraseña
         password_confirmation: Confirmar Contraseña
