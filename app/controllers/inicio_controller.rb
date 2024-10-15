@@ -1,6 +1,5 @@
 class InicioController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
-  skip_before_action :verify_data!, only: [ :index ]
   layout 'outside'
   def index
     if params[:search] or params[:area_id]
