@@ -79,3 +79,5 @@ end
 
 
 gem "devise", "~> 4.9"
+
+gem "paper_trail", "~> 15.2"
