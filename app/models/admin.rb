@@ -19,4 +19,8 @@
 class Admin < ApplicationRecord
   enum role: {desarrollador: 0, super: 1, analista: 2, administrativo: 3}
   belongs_to :user
+
+  def is_boss?
+    (desarrollador? or super?)
+  end
 end

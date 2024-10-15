@@ -9,13 +9,15 @@
   = number_to_phone @service.contact_phone, area_code: true, country_code: 58
 %p 
   %b Áreas:
-  = @service.areas.map(&:name)
+  = @service.areas.map(&:name).to_sentence
 
 
 %p
   %b Ubicación:
   = @service.location
 
-= link_to 'Edit', edit_service_path(@service)
-\|
-= link_to 'Back', services_path
+= link_to 'Editar', edit_service_path(@service), class: 'btn btn-sm btn-primary '
+
+= link_to 'Servicios', "#{services_path}?state=#{@service.location}", class: 'btn btn-sm btn-primary'
+
+= link_to 'Nuevo Servicio', new_service_path, class: 'btn btn-sm bg-success'

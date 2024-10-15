@@ -5,6 +5,7 @@ class ServicesController < ApplicationController
   # GET /services or /services.json
   def index
     @services = current_user&.client ? current_user&.client&.services : Service.all
+    @services = @services.by_state(params[:state]) if params[:state]
   end
 
   # GET /services/1 or /services/1.json

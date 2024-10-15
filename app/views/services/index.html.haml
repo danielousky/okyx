@@ -1,5 +1,7 @@
-%h1
-  = t('activerecord.models.service.other')&.titleize
+%h2
+  = @services.count
+  = t('activerecord.models.service.other')&.titleize.pluralize (@services.count)
+  = "en #{params[:state]}" if params[:state] 
   = link_to 'Agregar Nuevo Servicio', new_service_path, class: 'btn btn-lg btn-primary rounded-0'
 
 = render partial: '/services/list'

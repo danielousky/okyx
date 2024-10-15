@@ -1,8 +1,15 @@
 
 %h1.text-center Principal
-.position-absolute.top-50.start-50.translate-middle
-    - if current_user.admin
+.d-flex.justify-content-center
+    - if false #current_user.admin&.is_boss?
         = link_to areas_path, class: 'btn btn-lg btn-primary' do
             = t('activerecord.models.area.other')&.titleize
     = link_to services_path, class: 'btn btn-lg btn-primary ms-3' do
+        = Service.count
         = t('activerecord.models.service.other')&.titleize
+        En total!
+- if current_user.admin&.is_boss?
+    .mt-3.table-responsive.text-center
+        - Service.states.each do |state|
+
+            = link_to "#{state} #{Service.by_state(state).count}", "/services?state=#{state}", class: 'm-1 badge bg-info text-dark text-decoration-none'
