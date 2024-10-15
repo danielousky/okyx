@@ -9,7 +9,7 @@
     =# f.rich_text_area :description, required: true
     = f.association :areas, as: :check_boxes, input_html: {class: 'btn me-2 btn-outline-secondary rounded-0'}#, label_html: { class: "btn btn-secondary" } #, wrapper_html: { class: "mt-3" } 
     = f.input :profile
-    = f.input :contact_phone, required: true, as: :tel, input_html: {class: 'onlyNumbers maxSize'}
+    = f.input :contact_phone, as: :tel, input_html: {class: 'onlyNumbers maxSize'}
     = f.hint 'Solo números perimitidos. Empezar con 0'
     %br
     - if false
