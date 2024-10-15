@@ -16,8 +16,15 @@
   %b Ubicación:
   = @service.location
 
-= link_to 'Editar', edit_service_path(@service), class: 'btn btn-sm btn-primary '
+= link_to "#{services_path}?state=#{@service.location}", class: 'btn btn-sm btn-primary me-3' do
+  %i.fa.fa-chevron-left
+  = "Servicios de #{@service.location}"
 
-= link_to 'Servicios', "#{services_path}?state=#{@service.location}", class: 'btn btn-sm btn-primary'
+= link_to edit_service_path(@service), class: 'btn btn-sm btn-primary me-2' do
+  %i.fa.fa-pencil
+  Editar
 
-= link_to 'Nuevo Servicio', new_service_path, class: 'btn btn-sm bg-success'
+= link_to new_service_path, class: 'btn btn-sm bg-success' do
+  %i.fa.fa-plus
+  Nuevo Servicio
+

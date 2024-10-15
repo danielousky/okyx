@@ -1,0 +1,3 @@
+.mt-3.table-responsive.text-center
+    - Service.states.each do |state|
+        = link_to "#{state} #{Service.by_state(state).count}", "/services?state=#{state}", class: 'm-1 badge bg-info text-dark text-decoration-none'

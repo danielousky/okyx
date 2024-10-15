@@ -15,6 +15,7 @@ class ServicesController < ApplicationController
   # GET /services/new
   def new
     @service = Service.new
+    @service.location = params[:state] if params[:state]
   end
 
   # GET /services/1/edit
