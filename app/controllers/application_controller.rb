@@ -1,12 +1,23 @@
 class ApplicationController < ActionController::Base
     before_action :authenticate_user!
 
+    helper_method :current_admin
     def after_sign_in_path_for(resource)
         session_dashboard_path
     end
 
+    def current_admin
+        current_user&.admin
+    end
     def current_sing_in_admin
         unless current_user.admin
+            flash[:danger] = '¡Acceso Restringido!'
+            redirect_to session_dashboard_path
+        end
+    end
+
+    def current_sing_in_superadmin
+        unless current_user&.admin&.is_boss?
             flash[:danger] = '¡Acceso Restringido!'
             redirect_to session_dashboard_path
         end

@@ -7,7 +7,7 @@
     #navbarTogglerDemo02.collapse.navbar-collapse
       %ul.navbar-nav.me-auto.mb-2.mb-lg-0
         - if user_signed_in?
-          - if (current_user.admin)
+          - if current_admin&.is_boss?
             - @active = @controller_name.eql? 'area' ? 'active' : ''
             %li.nav-item{class: @active}
               = link_to t('activerecord.models.area.other')&.titleize, areas_path, class: 'nav-link'

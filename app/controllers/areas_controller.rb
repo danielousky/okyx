@@ -1,6 +1,6 @@
 class AreasController < ApplicationController
   before_action :set_area, only: %i[ show edit update destroy ]
-  before_action :current_sing_in_admin
+  before_action :current_sing_in_superadmin
 
   # GET /areas or /areas.json
   def index
