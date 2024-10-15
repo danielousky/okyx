@@ -6,20 +6,21 @@
       %span.navbar-toggler-icon
     #navbarTogglerDemo02.collapse.navbar-collapse
       %ul.navbar-nav.me-auto.mb-2.mb-lg-0
-        - if (user_signed_in? and current_user.admin)
+        - if user_signed_in?
+          - if (current_user.admin)
+            - @active = @controller_name.eql? 'area' ? 'active' : ''
+            %li.nav-item{class: @active}
+              = link_to t('activerecord.models.area.other')&.titleize, areas_path, class: 'nav-link'
           - @active = @controller_name.eql? 'area' ? 'active' : ''
           %li.nav-item{class: @active}
-            = link_to t('activerecord.models.area.other')&.titleize, areas_path, class: 'nav-link'
-        - @active = @controller_name.eql? 'area' ? 'active' : ''
-        %li.nav-item{class: @active}
-          = link_to t('activerecord.models.service.other')&.titleize, services_path, class: 'nav-link'          
-        - if false 
-          %li.nav-item
-            %a.nav-link.active{:href => "#"} Courses
-          %li.nav-item
-            %a.nav-link.active{"aria-current" => "page", :href => "#"} Blog
-          %li.nav-item
-            %a.nav-link.active{"aria-current" => "page", :href => "#"} Event
+            = link_to t('activerecord.models.service.other')&.titleize, services_path, class: 'nav-link'          
+          - if false 
+            %li.nav-item
+              %a.nav-link.active{:href => "#"} Courses
+            %li.nav-item
+              %a.nav-link.active{"aria-current" => "page", :href => "#"} Blog
+            %li.nav-item
+              %a.nav-link.active{"aria-current" => "page", :href => "#"} Event
 
       - if user_signed_in?
         = current_user.name
@@ -30,5 +31,5 @@
       - else
         = link_to '/users/sign_in', class: 'float-end rounded-0 my-1 btn btn-sm btn-outline-primary' do
           %i.fa.fa-right-from-bracket
-          Inicir Sesión    
+          Iniciar Sesión    
         
