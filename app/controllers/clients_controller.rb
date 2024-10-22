@@ -42,7 +42,7 @@ class ClientsController < ApplicationController
 
       if @client.update(client_params)
 
-        format.html { redirect_to session_dashboard_path, notice: "Area was successfully updated." }
+        format.html { redirect_to session_dashboard_path, notice: "Cliente actualizado con éxito." }
         format.json { render :show, status: :ok, location: @client }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -69,7 +69,7 @@ class ClientsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def client_params
-      params.require(:client).permit(:user_id, user_attributes: [:id, :email, :first_name, :last_name, :number_phone])
+      params.require(:client).permit(:user_id, user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :profile])
     end
     
     # def user_params
