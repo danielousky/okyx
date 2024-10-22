@@ -39,7 +39,12 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :admin
 
   has_one :client, inverse_of: :user, foreign_key: :user_id, dependent: :destroy
-  accepts_nested_attributes_for :client
+  # accepts_nested_attributes_for :client
+
+  validates :first_name, presence: true, unless: :new_record?
+  validates :last_name, presence: true, unless: :new_record?
+  validates :number_phone, presence: true, unless: :new_record?
+  validates :profile, presence: true, unless: :new_record?
 
   def name
     "#{first_name} #{last_name}"

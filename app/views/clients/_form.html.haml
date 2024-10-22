@@ -1,32 +1,28 @@
-= simple_form_for(@client) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-  = f.simple_fields_for :user, @user do |fu|
+= simple_form_for(@client, html: {novalidate: false}) do |f|
+  = f.simple_fields_for :user, @client.user do |fu|
+    = fu.error_notification
+    = fu.error_notification message: fu.object.errors[:base].to_sentence if fu.object.errors[:base].present?
     .form-inputs
       = fu.input :email, required: true, autofocus: true, autocomplete: "email"
       = fu.input :first_name, required: true
       = fu.input :last_name, required: true
-      = fu.input :number_phone
-      = fu.input :profile
+      = fu.input :number_phone, required: true
+      = fu.input :profile, required: true
 
   .form-actions
     = f.button :submit, class: 'btn btn-sm btn-success my-2'
 
 - if false
   -# frozen_string_literal: true
-  = form_tag(@client, class: 'form-horizontal') do
-    .modal-body
-
-      .control-group.my-3
-        %span.control-label 
-        .controls
-          = email_field_tag 'user[email]', @user.email, required: true, class: 'form-control mb-3', placeholder: 'Correo Electrónico'
-          = text_field_tag 'user[first_name]', @user.first_name, required: true, class: 'form-control mb-3', placeholder: 'Nombres'
-          = text_field_tag 'user[last_name]', @user.last_name, required: true, class: 'form-control mb-3', placeholder: 'Apellidos'
-          = phone_field_tag 'user[number_phone]', @user.number_phone, required: true, class: 'form-control mb-3', placeholder: 'Número telefónico'
-          = file_field_tag 'user[profile]', required: true, class: 'form-control mb-3', placeholder: 'Imágen de Perfil de Usuario'
-          
-            
-      .modal-footer
+  = form_tag(@client, class: 'form-horizontal', method: "post") do
+    .control-group.my-3
+      %span.control-label 
+      .controls
+        = email_field_tag 'client[user_attributes][email]', @user.email, required: true, class: 'form-control mb-3', placeholder: 'Correo Electrónico'
+        = text_field_tag 'client[user_attributes][first_name]', @user.first_name, required: true, class: 'form-control mb-3', placeholder: 'Nombres'
+        = text_field_tag 'client[user_attributes][last_name]', @user.last_name, required: true, class: 'form-control mb-3', placeholder: 'Apellidos'
+        = phone_field_tag 'client[user_attributes][number_phone]', @user.number_phone, required: true, class: 'form-control mb-3', placeholder: 'Número telefónico'
+        = file_field_tag 'client[user_attributes][profile]', required: true, class: 'form-control mb-3', placeholder: 'Imágen de Perfil de Usuario'      
+      
         = submit_tag 'Actualizar', class: 'btn btn-primary'

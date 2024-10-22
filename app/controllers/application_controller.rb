@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
     def verify_data!
         if current_user&.data_incompleted?
-            flash[:danger] = 'Faltan algunos datos por completar su registro. Por favor, complete la información solicitada'
+            flash[:warning] = 'Faltan algunos datos por completar su registro. Por favor, complete la información solicitada'
             redirect_to edit_client_path(current_user) 
         end    
     end

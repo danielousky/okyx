@@ -41,7 +41,6 @@ class ClientsController < ApplicationController
     respond_to do |format|
 
       if @client.update(client_params)
-
         format.html { redirect_to session_dashboard_path, notice: "Cliente actualizado con éxito." }
         format.json { render :show, status: :ok, location: @client }
       else
