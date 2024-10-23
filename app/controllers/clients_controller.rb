@@ -42,10 +42,10 @@ class ClientsController < ApplicationController
 
       if @client.update(client_params)
         format.html { redirect_to session_dashboard_path, notice: "Cliente actualizado con éxito." }
-        format.json { render :show, status: :ok, location: @client }
+        # format.json { render :show, status: :ok, location: @client }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @client.errors, status: :unprocessable_entity }
+        # format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
   end

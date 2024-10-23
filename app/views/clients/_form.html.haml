@@ -1,5 +1,5 @@
 
-= simple_form_for(@client, html: {novalidate: false}) do |f|
+= simple_form_for(@client, html: {method: "put"}) do |f|
   = f.simple_fields_for :user, @client.user do |fu|
     = fu.error_notification
     = fu.error_notification message: fu.object.errors[:base].to_sentence if fu.object.errors[:base].present?
