@@ -2,8 +2,15 @@
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .form-inputs
     = f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" }
-    = f.input :password, required: false, input_html: { autocomplete: "current-password" } |
+    =# f.input :password, required: false, input_html: { autocomplete: "current-password" } |
+    = f.label :password, class: 'mb-2', required: true
+    .form-group.input-group.form-inputs.mb-3{"data-controller" => "visibility-password"}
+      %br
+      = f.password_field :password, autocomplete: "off", class: 'form-control p-2', required: true, placeholder: 'Password'
+      %span.input-group-text
+        %a.fa.fa-eye-slash{"data-action" => "click->visibility-password#toggle", }
+
     = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
   .form-actions
-    = f.button :submit, "Entrar"
+    = f.button :submit, "Entrar", class: 'btn btn-primary'
 =# render "devise/shared/links"

@@ -41,6 +41,8 @@ class User < ApplicationRecord
   has_one :client, inverse_of: :user, foreign_key: :user_id, dependent: :destroy
   # accepts_nested_attributes_for :client
 
+  validates :password, presence: true, if: :new_record?
+  validates :password_confirmation, presence: true, if: :new_record?
   validates :first_name, presence: true, unless: :new_record?
   validates :last_name, presence: true, unless: :new_record?
   validates :number_phone, presence: true, unless: :new_record?
