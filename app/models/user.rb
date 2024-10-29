@@ -50,6 +50,10 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def admin?
+    !admin.nil?
+  end
+
   def name_incompleted? 
     first_name.blank? or last_name.blank?
   end
