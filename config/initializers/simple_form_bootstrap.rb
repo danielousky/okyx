@@ -329,7 +329,7 @@ SimpleForm.setup do |config|
   # Floating Labels form
   #
   # floating labels default_wrapper
-  config.wrappers :floating_labels_form, class: 'form-floating mb-3' do |b|
+  config.wrappers :floating_labels_form, class: 'form-floating' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -337,17 +337,17 @@ SimpleForm.setup do |config|
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-    b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
+    b.use :input, class: 'form-control mb-4', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :label
     b.use :full_error, wrap_with: { class: 'invalid-feedback' }
     b.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
   end
 
   # custom multi select
-  config.wrappers :floating_labels_select, class: 'form-floating mb-3' do |b|
+  config.wrappers :floating_labels_select, class: 'form-floating' do |b|
     b.use :html5
     b.optional :readonly
-    b.use :input, class: 'form-select', error_class: 'is-invalid', valid_class: 'is-valid'
+    b.use :input, class: 'form-select mb-4', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :label
     b.use :full_error, wrap_with: { class: 'invalid-feedback' }
     b.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }

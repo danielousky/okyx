@@ -286,11 +286,11 @@ es:
         name: Nombre
       service:
         condition: Condición
-        code: Identificador
+        code: CI o RIF
         name: Nombre del Servicio 
         description: Descripción        
         details: Descripción de Servicio         
-        areas: Áreas        
+        areas: Categorías      
         location: Ubicación        
         profile: Imagen del Servicio
         contact_phone_code: Código Operadora

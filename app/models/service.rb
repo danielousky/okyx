@@ -43,24 +43,24 @@ class Service < ApplicationRecord
       attachable.variant :thumb, resize_to_limit: [100, 100]
   end
 
-  enum condition: {Venezolano: 0, Extranjero: 1, Jurídico: 2, Pasaporte: 3, Gobierno: 4}
+  enum condition: {Venezolano: 0, Extranjero: 1, Jurídico: 2, Personal: 3, Pasaporte: 4, Gobierno: 5}
 
   # Validations:
 	validates :name, presence: true, uniqueness: {case_sensitive: false}
 	validates :details, presence: true
-	validates :contact_phone_code, presence: true
-	validates :contact_phone, presence: true
-	validates :condition, presence: true
-	validates :code, presence: true
+	# Atención: Estas validaciones fueron comentadas temporalmente para la carga inicial de servicios
+  # validates :condition, presence: true
+	# validates :code, presence: true
 	validates :areas, presence: true
 	validates :location, presence: true
 	validates :profile, presence: true
+	validates :contact_phone_code, presence: true
+	validates :contact_phone, presence: true
 
   # Scope:
   scope :search_by, -> (value) {where("name ILIKE '%#{value}%' OR details ILIKE '%#{value}%'")}
   scope :names, -> {select(:name).map{|ar| ar.name}}
   scope :by_state, -> (state) {where(location: state)}
-
   
   # Functions:
   def self.venezuela

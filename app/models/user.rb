@@ -59,7 +59,7 @@ class User < ApplicationRecord
   end
 
   def without_service
-    !(client&.services.any?)
+    !self.admin? and !(client&.services&.any?)
   end
   def data_incompleted?
     client.nil? or (!client&.services.any?) or name_incompleted? 
