@@ -20,7 +20,7 @@
     = f.input :link, hint: 'Enlace a Redes Sociales.'
     = f.input :location, collection: Service.states, wrapper: :floating_labels_select, include_blank: 'Seleccione', hint: 'Ubicación a dónde ofertará su servicio.'
     
-    - if action_name.eql? 'new' 
+    - if action_name.eql? 'new' and !current_user.admin?
       - @user = params[:user_id] ? User.find(params[:user_id]) : current_user
       - if @user&.name_incompleted?
         %hr
