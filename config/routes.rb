@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :areas
   resources :services
+
   resources :clients, only: [:edit, :update]
   devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
 

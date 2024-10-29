@@ -45,20 +45,20 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: :new_record?
   validates :first_name, presence: true, unless: :new_record?
   validates :last_name, presence: true, unless: :new_record?
-  validates :number_phone, presence: true, unless: :new_record?
-  validates :profile, presence: true, unless: :new_record?
 
   def name
     "#{first_name} #{last_name}"
   end
 
-  has_one_attached :profile do |attachable|
-    attachable.variant :icon, resize_to_limit: [35, 35]
-    attachable.variant :thumb, resize_to_limit: [100, 100]
-  end  
+  def name_incompleted? 
+    first_name.blank? or last_name.blank?
+  end
 
+  def without_service
+    !(client&.services.any?)
+  end
   def data_incompleted?
-    first_name.blank? or last_name.blank? or email.blank?
+    client.nil? or (!client&.services.any?) or name_incompleted? 
   end
 
   private

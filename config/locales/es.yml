@@ -268,7 +268,6 @@ es:
   activerecord:
     errors:
       models:
-
     models:
       area:
         one: 'Categoría'
@@ -286,13 +285,16 @@ es:
       area:
         name: Nombre
       service:
-        name: Nombre        
+        condition: Condición
+        code: Identificador
+        name: Nombre del Servicio 
         description: Descripción        
-        details: Detalles        
+        details: Descripción de Servicio         
         areas: Áreas        
         location: Ubicación        
-        profile: Imagen Perfil
-        contact_phone: Número Telefónico de Contacto
+        profile: Imagen del Servicio
+        contact_phone_code: Código Operadora
+        contact_phone: Número Telefónico
         link: Enlace
       user:
         name: Nombre

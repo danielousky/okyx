@@ -58,7 +58,7 @@ SimpleForm.setup do |config|
     b.use :label, class: 'form-label'
     b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :full_error, wrap_with: { class: 'invalid-feedback' }
-    b.use :hint, wrap_with: { class: 'form-text' }
+    b.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
   end
 
   # vertical input for boolean
@@ -69,7 +69,7 @@ SimpleForm.setup do |config|
       bb.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
       bb.use :label, class: 'form-check-label'
       bb.use :full_error, wrap_with: { class: 'invalid-feedback' }
-      bb.use :hint, wrap_with: { class: 'form-text' }
+      bb.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
     end
   end
 
@@ -82,7 +82,7 @@ SimpleForm.setup do |config|
     end
     b.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :full_error, wrap_with: { class: 'invalid-feedback d-block' }
-    b.use :hint, wrap_with: { class: 'form-text' }
+    b.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
   end
 
   # vertical input for inline radio buttons and check boxes
@@ -94,8 +94,9 @@ SimpleForm.setup do |config|
     end
     b.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :full_error, wrap_with: { class: 'invalid-feedback d-block' }
-    b.use :hint, wrap_with: { class: 'form-text' }
+    b.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
   end
+
 
   # vertical file input
   config.wrappers :vertical_file, class: 'mb-3' do |b|
@@ -107,9 +108,9 @@ SimpleForm.setup do |config|
     b.use :label, class: 'form-label'
     b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :full_error, wrap_with: { class: 'invalid-feedback' }
-    b.use :hint, wrap_with: { class: 'form-text' }
+    b.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
   end
-
+  
   # vertical select input
   config.wrappers :vertical_select, class: 'mb-3' do |b|
     b.use :html5
@@ -117,7 +118,7 @@ SimpleForm.setup do |config|
     b.use :label, class: 'form-label'
     b.use :input, class: 'form-select', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :full_error, wrap_with: { class: 'invalid-feedback' }
-    b.use :hint, wrap_with: { class: 'form-text' }
+    b.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
   end
 
   # vertical multi select
@@ -129,7 +130,7 @@ SimpleForm.setup do |config|
       ba.use :input, class: 'form-select mx-1', error_class: 'is-invalid', valid_class: 'is-valid'
     end
     b.use :full_error, wrap_with: { class: 'invalid-feedback d-block' }
-    b.use :hint, wrap_with: { class: 'form-text' }
+    b.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
   end
 
   # vertical range input
@@ -141,7 +142,7 @@ SimpleForm.setup do |config|
     b.use :label, class: 'form-label'
     b.use :input, class: 'form-range', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :full_error, wrap_with: { class: 'invalid-feedback' }
-    b.use :hint, wrap_with: { class: 'form-text' }
+    b.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
   end
 
 
@@ -160,10 +161,10 @@ SimpleForm.setup do |config|
     b.wrapper :grid_wrapper, class: 'col-sm-9' do |ba|
       ba.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { class: 'invalid-feedback' }
-      ba.use :hint, wrap_with: { class: 'form-text' }
+      ba.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
     end
   end
-
+  
   # horizontal input for boolean
   config.wrappers :horizontal_boolean, class: 'row mb-3' do |b|
     b.use :html5
@@ -173,7 +174,7 @@ SimpleForm.setup do |config|
         bb.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
         bb.use :label, class: 'form-check-label'
         bb.use :full_error, wrap_with: { class: 'invalid-feedback' }
-        bb.use :hint, wrap_with: { class: 'form-text' }
+        bb.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
       end
     end
   end
@@ -186,7 +187,7 @@ SimpleForm.setup do |config|
     b.wrapper :grid_wrapper, class: 'col-sm-9' do |ba|
       ba.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { class: 'invalid-feedback d-block' }
-      ba.use :hint, wrap_with: { class: 'form-text' }
+      ba.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
     end
   end
 
@@ -198,7 +199,7 @@ SimpleForm.setup do |config|
     b.wrapper :grid_wrapper, class: 'col-sm-9' do |ba|
       ba.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { class: 'invalid-feedback d-block' }
-      ba.use :hint, wrap_with: { class: 'form-text' }
+      ba.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
     end
   end
 
@@ -213,7 +214,7 @@ SimpleForm.setup do |config|
     b.wrapper :grid_wrapper, class: 'col-sm-9' do |ba|
       ba.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { class: 'invalid-feedback' }
-      ba.use :hint, wrap_with: { class: 'form-text' }
+      ba.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
     end
   end
 
@@ -225,7 +226,7 @@ SimpleForm.setup do |config|
     b.wrapper :grid_wrapper, class: 'col-sm-9' do |ba|
       ba.use :input, class: 'form-select', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { class: 'invalid-feedback' }
-      ba.use :hint, wrap_with: { class: 'form-text' }
+      ba.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
     end
   end
 
@@ -239,7 +240,7 @@ SimpleForm.setup do |config|
         bb.use :input, class: 'form-select mx-1', error_class: 'is-invalid', valid_class: 'is-valid'
       end
       ba.use :full_error, wrap_with: { class: 'invalid-feedback d-block' }
-      ba.use :hint, wrap_with: { class: 'form-text' }
+      ba.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
     end
   end
 
@@ -253,7 +254,7 @@ SimpleForm.setup do |config|
     b.wrapper :grid_wrapper, class: 'col-sm-9' do |ba|
       ba.use :input, class: 'form-range', error_class: 'is-invalid', valid_class: 'is-valid'
       ba.use :full_error, wrap_with: { class: 'invalid-feedback' }
-      ba.use :hint, wrap_with: { class: 'form-text' }
+      ba.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
     end
   end
 
@@ -273,7 +274,7 @@ SimpleForm.setup do |config|
 
     b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :error, wrap_with: { class: 'invalid-feedback' }
-    b.optional :hint, wrap_with: { class: 'form-text' }
+    b.optional :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
   end
 
   # inline input for boolean
@@ -284,7 +285,7 @@ SimpleForm.setup do |config|
       bb.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
       bb.use :label, class: 'form-check-label'
       bb.use :error, wrap_with: { class: 'invalid-feedback' }
-      bb.optional :hint, wrap_with: { class: 'form-text' }
+      bb.optional :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
     end
   end
 
@@ -299,7 +300,7 @@ SimpleForm.setup do |config|
       bb.use :input, class: 'form-check-input', error_class: 'is-invalid', valid_class: 'is-valid'
       bb.use :label, class: 'form-check-label'
       bb.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
-      bb.use :hint, wrap_with: { class: 'form-text' }
+      bb.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
     end
   end
 
@@ -321,7 +322,7 @@ SimpleForm.setup do |config|
       ba.optional :append
       ba.use :full_error, wrap_with: { class: 'invalid-feedback' }
     end
-    b.use :hint, wrap_with: { class: 'form-text' }
+    b.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
   end
 
 
@@ -339,7 +340,7 @@ SimpleForm.setup do |config|
     b.use :input, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :label
     b.use :full_error, wrap_with: { class: 'invalid-feedback' }
-    b.use :hint, wrap_with: { class: 'form-text' }
+    b.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
   end
 
   # custom multi select
@@ -349,7 +350,7 @@ SimpleForm.setup do |config|
     b.use :input, class: 'form-select', error_class: 'is-invalid', valid_class: 'is-valid'
     b.use :label
     b.use :full_error, wrap_with: { class: 'invalid-feedback' }
-    b.use :hint, wrap_with: { class: 'form-text' }
+    b.use :hint, wrap_with: { class: 'bg-warning p-1 bg-opacity-10 m-0' }
   end
 
 

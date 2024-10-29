@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_15_185933) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_28_214529) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,6 +91,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_15_185933) do
     t.string "contact_phone"
     t.string "link"
     t.bigint "client_id"
+    t.integer "condition"
+    t.integer "code"
+    t.string "contact_phone_code"
     t.index ["client_id"], name: "index_services_on_client_id"
   end
 

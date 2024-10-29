@@ -18,7 +18,7 @@
         - @valid_confirm = 'is-invalid'
         - @message_confirm = "<div class='invalid-feedback'>#{f.object.errors.full_messages_for(:password_confirmation).to_sentence}</div>".html_safe
       - else
-        - @valid_confirm = 'is-valid'        
+        - @valid_confirm = 'is-valid'
       
     = f.label :password, class: 'mb-2', required: true
     .form-group.input-group.form-inputs.mb-3{"data-controller" => "visibility-password"}

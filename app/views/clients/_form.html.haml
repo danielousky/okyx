@@ -1,17 +1,18 @@
 
-= simple_form_for(@client, html: {method: "put"}) do |f|
-  = f.simple_fields_for :user, @client.user do |fu|
-    = fu.error_notification
-    = fu.error_notification message: fu.object.errors[:base].to_sentence if fu.object.errors[:base].present?
-    .form-inputs
-      = fu.input :email, required: true, autofocus: true, autocomplete: "email"
-      = fu.input :first_name, required: true
-      = fu.input :last_name, required: true
-      = fu.input :number_phone, required: true
-      = fu.input :profile, required: true
+- if false
+  = simple_form_for(@client, html: {method: "put"}) do |f|
+    = f.simple_fields_for :user, @client.user do |fu|
+      = fu.error_notification
+      = fu.error_notification message: fu.object.errors[:base].to_sentence if fu.object.errors[:base].present?
+      .form-inputs
+        = fu.input :email, required: true, autofocus: true, autocomplete: "email"
+        = fu.input :first_name, required: true
+        = fu.input :last_name, required: true
+        = fu.input :number_phone, required: true
+        = fu.input :profile, required: true
 
-  .form-actions
-    = f.button :submit, class: 'btn btn-sm btn-success my-2'
+    .form-actions
+      = f.button :submit, class: 'btn btn-sm btn-success my-2'
 
 - if false
   -# frozen_string_literal: true

@@ -2,15 +2,18 @@
 #
 # Table name: services
 #
-#  id            :bigint           not null, primary key
-#  contact_phone :string
-#  details       :string
-#  link          :string
-#  location      :string
-#  name          :string           not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  client_id     :bigint
+#  id                 :bigint           not null, primary key
+#  code               :integer
+#  condition          :integer
+#  contact_phone      :string
+#  contact_phone_code :string
+#  details            :string
+#  link               :string
+#  location           :string
+#  name               :string           not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  client_id          :bigint
 #
 # Indexes
 #

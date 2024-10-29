@@ -1,39 +1,38 @@
 -# frozen_string_literal: true
-= simple_form_for(@service, wrapper: :vertical_form) do |f|
+= simple_form_for(@service, wrapper: :floating_labels_form) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :name, required: true
-    = f.input :details, as: :text
+    .row
+      = f.input :condition, required: true, include_blank: 'Seleccione', hint: 'Condición formal del servicio.', collection: Service.conditions.keys, wrapper: :floating_labels_select, wrapper_html: {class: 'col-4'}, hint_html: { class: '' }, label_html: {class: 'ms-3 mt-1 pt-1'}
+      = f.input :code, required: true, as: :string, hint: "Indique rif o documento de identidad. Solo números permitidos.", hint_html: { class: '' }, wrapper_html: {class: 'col-8'}, input_html: {class: 'onlyNumbers maxSize', size: 10}, label_html: {class: 'ms-3'}
+    = f.input :name, required: true, hint: "Indique el nombre del servicio si lo tiene o cómo desea ser contactado por sus potenciales clientes."
+    = f.input :details, as: :text, hint: 'Indique brevemente en qué consiste especificamente el servicio que ofrece, para ampliar la información a sus clientes potenciales, indique cualidades innovadoras, exclusivas y sobresalientes.'
     =# f.rich_text_area :description, required: true
-    = f.association :areas, as: :check_boxes, input_html: {class: 'btn me-2 btn-outline-secondary rounded-0'}#, label_html: { class: "btn btn-secondary" } #, wrapper_html: { class: "mt-3" } 
-    = f.input :profile
-    = f.input :contact_phone, as: :tel, input_html: {class: 'onlyNumbers maxSize'}
-    = f.hint 'Solo números perimitidos. Empezar con 0'
-    %br
-    - if false
+    = f.input :profile, hint: 'Agregue el logo del servicio o foto de la persona que ofrece sus servicios personales.'
+    = f.association :areas, wrapper: :floating_labels_select, input_html: {class: ''}, hint: 'Seleccione tantas opciones como describan su servicio.' #wrapper_html: { class: "" } #, label_html: { class: "btn btn-secondary" }
+    .row
       - operators_code = ['0412', '0414', '0424', '0416','0426']
-      - if phone = @service.contact_phone
-        - @operator_code = phone[0..3] 
-        - @number_phone = phone[4..10] 
-      .input-group
-        = select_tag 'phone_operator', options_for_select(operators_code, @operator_code), class: 'phone form-control col-4 required', required: true, include_blank: 'Código Operadora'
-        = text_field_tag 'phone_complement', @number_phone, placeholder: 'Complemento', class: 'phone form-control upcase col-6 onlyNumbers maxSize', required: true
+      = f.input :contact_phone_code, collection: operators_code, include_blank: 'Seleccione', wrapper: :floating_labels_select, wrapper_html: {class: 'col-4'}, label_html: {class: 'ms-3'}
+      = f.input :contact_phone, as: :tel, input_html: {class: 'onlyNumbers maxSize'}, wrapper_html: {class: 'col-8'}, label_html: {class: 'ms-3'}
+    %br
+    = f.input :link, hint: 'Enlace a Redes Sociales.'
+    = f.input :location, collection: Service.states, wrapper: :floating_labels_select, include_blank: 'Seleccione', hint: 'Ubicación a dónde ofertará su servicio.'
+    
+    - if action_name.eql? 'new' 
+      - @user = params[:user_id] ? User.find(params[:user_id]) : current_user
+      - if @user&.name_incompleted?
+        %hr
+        .my-3.p-1.bg-primary.text-light
+          %h2.text-center Sus datos personales como responsable del servicio
+        = hidden_field_tag '[user]id', @user.id, required: true
+        .form-floating.mb-3.user_first_name.required
+          = text_field_tag 'user[first_name]', @user.first_name, required: true, class: 'form-control required'
+          = label 'user','first_name', class: 'required'
+        .form-floating.mb-3.user_last_name.required
+          = text_field_tag 'user[last_name]', @user.first_name, required: true, class: 'form-control required'
+          = label 'user','last_name', class: 'required'
 
-    =# hidden_field 'service_contact_phone', @service.contact_phone
-
-    =# f.inp :contact_phone
-    = f.input :link
-    = f.input :location, collection: Service.states
   .form-actions
     = f.button :submit, class: 'btn btn-success'
-
-- if false
-  :javascript
-    const selectElement = document.querySelector(".phone");
-    const result = document.querySelector("#service_contact_phone");
-
-    selectElement.addEventListener("change", (event) => {
-      result.textContent = `${event.target.value}`;
-    });

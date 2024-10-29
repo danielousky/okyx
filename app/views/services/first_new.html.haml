@@ -1,0 +1,14 @@
+%h1 Datos del servicio
+%p.alert.alert-warning
+    Si ofrece más de un servicio debe llenar el formulario por cada servicio prestado. Esto con la finalidad de facilitar la búsqueda de su servicio ofertado. Al finalizar el formulario podrá encontrar la opción de incluir más servicios a su solicitud, si lo requiere
+= form_tag("/services/complete_create", class: 'form-horizontal', method: :post) do
+    .btn-group.btn-group-toggle{"data-toggle" => "buttons"}
+        - @service.conditions.each do |condition|
+            %label.btn.btn-info
+                = form.radio_button field.method_name, condition[1], checked: field.form_value.eql?(condition[1])
+                = condition[0]&.titleize
+    
+    = text_field_tag, 'service[code]'
+    = text_field_tag, 'service[name]'
+    = text_field_tag, 'service[type]'
+    
