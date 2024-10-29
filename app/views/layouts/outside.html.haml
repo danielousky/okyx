@@ -9,12 +9,13 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
     = favicon_link_tag 'own_resources/logo_icon.svg'
-  %body
-    .container-flouid
-      %nav.navbar.navbar-expand-lg.bg-light
-        .container
-          = render '/layouts/invite_nav'
+  %body.bg-primary-okyx 
+    .content-fluid.body
+      = render '/layouts/publish'
+      .bg-secondary-okyx.p-2.m-0
+      = render '/layouts/invite_nav'
+      .bg-secondary-okyx.p-2
       = render "/layouts/flashes"
-      .container.mt-2
-        = yield
-        = render '/layouts/footer'
+      
+    = yield
+    = render '/layouts/footer'

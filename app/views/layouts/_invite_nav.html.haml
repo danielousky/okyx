@@ -1,4 +1,8 @@
-%a.navbar-brand{:href => "/"}
-  = image_tag 'own_resources/logo.svg', width: 120, class: 'm-0 p-0'
+.container-flouid.px-3
+  %nav.navbar.bg-primary-okyx
+    %a.navbar-brand{:href => "/"}
+      = image_tag 'own_resources/logo_name_2.svg', width: 120, class: 'm-0 p-0'
 
-= render '/layouts/session_links'
+    = render partial: 'search/form'
+    = render '/layouts/session_links'
+= render partial: '/areas/group_buttons'# if params[:search]

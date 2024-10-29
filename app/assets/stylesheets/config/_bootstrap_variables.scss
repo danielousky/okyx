@@ -9,10 +9,14 @@ $headings-font-family:    $headers-font;
 $body-bg:                 $light-gray;
 $font-size-base: 1rem;
 
+
+// OKYX COLORS:
+$primary-color: #FF8E00; 
+$secondary-color: #071EA8; 
 // Colors
 $body-color: $gray;
 
-$primary:    $cool-primary;
+$primary:    $secondary-color;
 $success:    $cool-success;
 $info:       $cool-info;
 $danger:     $cool-danger;
@@ -20,9 +24,9 @@ $warning:    $cool-warning;
 $light:      $cool-light;
 
 // Buttons & inputs' radius
-$border-radius:    1px;
-$border-radius-lg: 1px;
-$border-radius-sm: 1px;
+$border-radius:    0px;
+$border-radius-lg: 0px;
+$border-radius-sm: 0px;
 
 // Override other variables below!
 

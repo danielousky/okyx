@@ -1,7 +1,11 @@
-= form_tag("/", class: 'form-horizontal', method: :get) do
-  .content-fluid.p-4
-    .input-group
-      = hidden_field_tag :area_id, params[:area_id] if params[:area_id]
-      = text_field_tag :search, params[:search], {class: 'form-control rounded-0', "aria-describedby" => "search-addon", "aria-label" => "Search", :placeholder => "Buscar Servicio", :type => "search"}
-      %button.btn.btn-success.rounded-0{"data-mdb-ripple-init" => "", :type => "submit"} Buscar
-      %a.btn.btn-warning.ms-2.rounded-0{onclick: "$('#categories').toggleClass('d-none')"} Categorías
+= form_tag("/", class: '', method: :get) do
+  = hidden_field_tag :area_id, params[:area_id] if params[:area_id]
+  .p-2
+    .row
+      .col-9.px-0
+        = text_field_tag :search, params[:search], {class: 'form-control', "aria-describedby" => "search-addon", "aria-label" => "Search", :placeholder => "Buscar Servicio", :type => "search"}
+      .col-1.px-0
+        %button.btn.btn-success{"data-mdb-ripple-init" => "", :type => "submit"}
+          %i.fa.fa-search
+      .col-1
+        .btn.btn-warning.ms-2{onclick: "$('#categories').toggleClass('d-none')"} Categorías

@@ -9,9 +9,10 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
     = favicon_link_tag 'own_resources/logo_icon.svg'
-  %body
-    .container-flouid
+  %body.bg-primary-okyx 
+    .container-fluid
       = render '/layouts/main_nav'
+      .bg-secondary-okyx.p-3
       = render "/layouts/flashes"
       .container.mt-2
         = yield

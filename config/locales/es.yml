@@ -293,7 +293,7 @@ es:
         areas: Categorías      
         location: Ubicación        
         profile: Imagen del Servicio
-        contact_phone_code: Código Operadora
+        contact_phone_code: Código 
         contact_phone: Número Telefónico
         link: Enlace
       user:
