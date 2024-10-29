@@ -1,6 +1,5 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: %i[ show edit update destroy ]
-  before_action :set_user, only: %i[ update create ]
   before_action :verify_data!, except: %i[ new create ]
 
   # GET /services or /services.json
@@ -76,11 +75,6 @@ class ServicesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_service
       @service = Service.find(params[:id])
-    end
-
-    def set_user
-
-      @user = User.where(id: params[:user][:id]).first
     end
 
     # Only allow a list of trusted parameters through.
