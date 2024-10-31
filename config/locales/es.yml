@@ -296,6 +296,7 @@ es:
         contact_phone_code: Código 
         contact_phone: Número Telefónico
         link: Enlace
+        conditions_accepted: "Declaro que acepto los términos y condiciones"
       user:
         name: Nombre
         first_name: Nombres

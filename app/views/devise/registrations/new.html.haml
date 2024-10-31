@@ -1,38 +1,40 @@
-%h2.text-center Registrarse
-%p.alert.alert-warning Para iniciar su registro necesitamos  verificar su identidad por favor indique lo siguiente:
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = f.error_notification
-  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
-  .form-inputs
-    = f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email", placeholder: 'Correo Electrónico' } 
+.container-fluid
+  .container
+    = title "Registrarse"
+    %p.alert.alert-warning Para iniciar su registro necesitamos  verificar su identidad por favor indique lo siguiente:
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = f.error_notification
+      = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+      .form-inputs
+        = f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email", placeholder: 'Correo Electrónico' } 
 
-    - if f.object.errors.any?
-    
-      - if f.object.errors.include? 'password'
-        - @valid = 'is-invalid'
-        - @message = "<div class='invalid-feedback'>#{f.object.errors.full_messages_for(:password).to_sentence}</div>".html_safe
-      - else
-        - @valid = 'is-valid'
+        - if f.object.errors.any?
+        
+          - if f.object.errors.include? 'password'
+            - @valid = 'is-invalid'
+            - @message = "<div class='invalid-feedback'>#{f.object.errors.full_messages_for(:password).to_sentence}</div>".html_safe
+          - else
+            - @valid = 'is-valid'
 
-      - if f.object.errors.include? 'password_confirmation'
-        - @valid_confirm = 'is-invalid'
-        - @message_confirm = "<div class='invalid-feedback'>#{f.object.errors.full_messages_for(:password_confirmation).to_sentence}</div>".html_safe
-      - else
-        - @valid_confirm = 'is-valid'
-      
-    = f.label :password, class: 'mb-2', required: true
-    .form-group.input-group.form-inputs.mb-3{"data-controller" => "visibility-password"}
-      %br
-      = f.password_field :password, autocomplete: "off", class: "form-control p-2 #{@valid}", required: true, placeholder: 'Contraseña'
-      %span.input-group-text
-        %a.password-field-icon-2.far.fa-eye-slash{"data-action" => "click->visibility-password#toggle", }
-      = @message
-    = f.label :password_confirmation, class: 'mb-2', required: true
-    .form-group.input-group.mb-3{"data-controller" => "visibility-password"}
-      = f.password_field :password_confirmation, autocomplete: "off", class: "form-control p-2 #{@valid_confirm}", required: true, placeholder: 'Confirmación de Contraseña'
-      %span.input-group-text
-        %a.password-field-icon-2.far.fa-eye-slash{"data-action" => "click->visibility-password#toggle"}
-      = @message_confirm
-  .form-actions
-    = f.button :submit, "Registarse", class: 'btn btn-primary'
-=# render "devise/shared/links"
+          - if f.object.errors.include? 'password_confirmation'
+            - @valid_confirm = 'is-invalid'
+            - @message_confirm = "<div class='invalid-feedback'>#{f.object.errors.full_messages_for(:password_confirmation).to_sentence}</div>".html_safe
+          - else
+            - @valid_confirm = 'is-valid'
+          
+        = f.label :password, class: 'mb-2', required: true
+        .form-group.input-group.form-inputs.mb-3{"data-controller" => "visibility-password"}
+          %br
+          = f.password_field :password, autocomplete: "off", class: "form-control p-2 #{@valid}", required: true, placeholder: 'Contraseña'
+          %span.input-group-text
+            %a.password-field-icon-2.far.fa-eye-slash{"data-action" => "click->visibility-password#toggle", }
+          = @message
+        = f.label :password_confirmation, class: 'mb-2', required: true
+        .form-group.input-group.mb-3{"data-controller" => "visibility-password"}
+          = f.password_field :password_confirmation, autocomplete: "off", class: "form-control p-2 #{@valid_confirm}", required: true, placeholder: 'Confirmación de Contraseña'
+          %span.input-group-text
+            %a.password-field-icon-2.far.fa-eye-slash{"data-action" => "click->visibility-password#toggle"}
+          = @message_confirm
+      .form-actions
+        = f.button :submit, "Registarse", class: 'btn btn-primary'
+    =# render "devise/shared/links"
