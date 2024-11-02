@@ -7,8 +7,8 @@
     - # Cédula o RIF
     = f.hint 'Indique documento de identidad'
     .row
-      = f.input :condition, required: required, include_blank: 'Seleccione', collection: Service.conditions.keys, wrapper: :floating_labels_select, wrapper_html: {class: 'col-2 pe-0'}, label_html: {class: 'ms-3 mt-1 pt-1'}
-      = f.input :code, required: required, as: :string, wrapper_html: {class: 'col-10 ps-0'}, input_html: {class: 'onlyNumbers maxSize', size: 10}, label_html: {class: 'ms-3'}
+      = f.input :condition, required: required, selected: Service.conditions.first, collection: Service.conditions.keys, wrapper: :floating_labels_select, wrapper_html: {class: 'col-4 pe-0'}, label_html: {class: 'ms-2 mt-1 pt-1 pb-0'}
+      = f.input :code, required: required, as: :string, wrapper_html: {class: 'col-8 ps-0'}, input_html: {class: 'onlyNumbers maxSize', size: 10}, label_html: {class: 'ms-3'}
     
     - # Nombre
     = f.hint "Indique el nombre del servicio si lo tiene o cómo desea ser contactado por sus potenciales clientes"
@@ -31,8 +31,8 @@
     = f.hint 'Indique el número telefónico de contacto para el servicio'
     .row
       - operators_code = ['0412', '0414', '0424', '0416','0426']
-      = f.input :contact_phone_code, collection: operators_code, include_blank: 'Seleccione', wrapper: :floating_labels_select, wrapper_html: {class: 'col-sm-4 pe-0'}, label_html: {class: 'ms-3'}
-      = f.input :contact_phone, as: :tel, input_html: {class: 'onlyNumbers maxSize', size: 7}, wrapper_html: {class: 'col-sm-8 ps-0'}, label_html: {class: 'ms-3'}
+      = f.input :contact_phone_code, collection: operators_code, include_blank: 'Seleccione', wrapper: :floating_labels_select, wrapper_html: {class: 'col-4 pe-0'}, label_html: {class: 'ms-3'}
+      = f.input :contact_phone, as: :tel, input_html: {class: 'onlyNumbers maxSize', size: 7}, wrapper_html: {class: 'col-8 ps-0'}, label_html: {class: 'ms-3'}
 
     = f.hint 'Enlace a principal red social'
     = f.input :link
@@ -40,7 +40,7 @@
     = f.hint 'Ubicación a dónde ofertará su servicio'
     = f.input :location, collection: Service.states, wrapper: :floating_labels_select, include_blank: 'Seleccione'
     
-    - if action_name.eql? 'new' and !current_user.admin?
+    - if !current_user.admin?
       - @user = params[:user_id] ? User.find(params[:user_id]) : current_user
       - if @user&.name_incompleted?
         %hr
@@ -53,13 +53,13 @@
           = text_field_tag 'user[last_name]', @user.first_name, required: true, class: 'form-control required'
           = label 'user','last_name', class: 'required'
 
-    - if action_name.eql? 'new'
-      - content = render partial: '/layouts/terminos_legales'
-      - id = 'legal_conditions'
-      - title = 'Términos y condiciones legales'
-      = render partial: '/layouts/modal-scaffold', locals: {content: content, id: id, title: title}
-      .bg-warning.p-1.bg-opacity-75.mb-3
-        = f.input :conditions_accepted, label: "Declaro que acepto los términos y condiciones expuestas <a class='link' data-bs-target='#legal_conditions' data-bs-toggle='modal'>aquí</a>".html_safe, wrapper_html: {class: 'p-3'}
+      - if true #action_name.eql? 'new'
+        - content = render partial: '/layouts/terminos_legales'
+        - id = 'legal_conditions'
+        - title = 'Términos y condiciones legales'
+        = render partial: '/layouts/modal-scaffold', locals: {content: content, id: id, title: title}
+        .bg-warning.p-1.bg-opacity-75.mb-3
+          = f.input :conditions_accepted, label: "Declaro que acepto los términos y condiciones expuestas <a class='link' data-bs-target='#legal_conditions' data-bs-toggle='modal'>aquí</a>".html_safe, wrapper_html: {class: 'p-3'}
   
   .form-actions
     = f.button :submit, class: 'btn btn-success'

@@ -1,3 +1,4 @@
+
 - if params[:state] 
   %h3
     = @services.count
@@ -8,8 +9,9 @@
   = render partial: '/services/list'
 - else
   %h3 
-    Seleccione un Estado
-    = link_to 'Agregar Nuevo Servicio', new_service_path, class: 'btn btn-lg btn-primary rounded-0 float-end'
+    = link_to 'Agregar Nuevo Servicio', new_service_path, class: 'btn btn-lg btn-primary float-end'
+    %br
+    = title 'Seleccione un Estado'
   .mt-3
     = render '/services/states_list'  
 

@@ -43,7 +43,7 @@ class Service < ApplicationRecord
       attachable.variant :thumb, resize_to_limit: [100, 100]
   end
 
-  enum condition: {Venezolano: 0, Extranjero: 1, Jurídico: 2, Personal: 3, Pasaporte: 4, Gobierno: 5}
+  enum condition: {V: 0, E: 1, J: 2, G: 3}
 
   # Validations:
 	validates :name, presence: true, uniqueness: {case_sensitive: false}
@@ -56,6 +56,7 @@ class Service < ApplicationRecord
 	validates :profile, presence: true
 	validates :contact_phone_code, presence: true
 	validates :contact_phone, presence: true
+	validates :conditions_accepted, presence: true
 
   # Scope:
   scope :search_by, -> (value) {where("name ILIKE '%#{value}%' OR details ILIKE '%#{value}%'")}
