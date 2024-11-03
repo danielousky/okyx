@@ -56,7 +56,7 @@ class Service < ApplicationRecord
 	validates :profile, presence: true
 	validates :contact_phone_code, presence: true
 	validates :contact_phone, presence: true
-	validates :conditions_accepted, presence: true
+	# validates :conditions_accepted, presence: true
 
   # Scope:
   scope :search_by, -> (value) {where("name ILIKE '%#{value}%' OR details ILIKE '%#{value}%'")}
