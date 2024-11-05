@@ -1,9 +1,9 @@
 - if @services.any?
-    - msg = "#{@services.count} #{'resultado'.pluralize(@services.count)} #{'entontrado'.pluralize(@services.count)}!"
+    - msg = "#{@services.count} #{'resultado'.pluralize(@services.count)} #{'encontrado'.pluralize(@services.count)}!"
     - clase = 'alert-success'
 - else
     - clase = 'alert-danger'
-    - msg = "#{@services.count} #{'resultado'.pluralize(@services.count)} #{'entontrado'.pluralize(@services.count)}. Por favor, intente buscando con otra palabra clave"
+    - msg = "#{@services.count} #{'resultado'.pluralize(@services.count)} #{'encontrado'.pluralize(@services.count)}. Por favor, intente buscando con otra palabra clave"
 
 %h4.alert{class: clase}= msg
 
