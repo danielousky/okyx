@@ -1,5 +1,41 @@
 [
     {
+        "iso_31662": "VE-A",
+        "estado": "Distrito Capital",
+        "capital": "Caracas",
+        "id_estado": 24,
+        "municipios": [
+            {
+                "municipio": "Libertador",
+                "capital": "Caracas",
+                "parroquias": [
+                    "23 de enero",
+                    "Altagracia",
+                    "Antímano",
+                    "Caricuao",
+                    "Catedral",
+                    "Coche",
+                    "El Junquito",
+                    "El Paraíso",
+                    "El Recreo",
+                    "El Valle",
+                    "Candelaria",
+                    "La Pastora",
+                    "La Vega",
+                    "Macarao",
+                    "San Agustín",
+                    "San Bernardino",
+                    "San José",
+                    "San Juan",
+                    "San Pedro",
+                    "Santa Rosalía",
+                    "Santa Teresa",
+                    "Sucre (Catia)"
+                ]        
+            }
+        ]
+    },    
+    {
         "iso_31662": "VE-X",
         "estado": "Amazonas",
         "capital": "Puerto Ayacucho",
@@ -3826,42 +3862,6 @@
             "Tamare",
             "Tía Juana",
             "Villa Rosario"
-        ]
-    },
-    {
-        "iso_31662": "VE-A",
-        "estado": "Distrito Capital",
-        "capital": "Caracas",
-        "id_estado": 24,
-        "municipios": [
-            {
-                "municipio": "Libertador",
-                "capital": "Caracas",
-                "parroquias": [
-                    "23 de enero",
-                    "Altagracia",
-                    "Antímano",
-                    "Caricuao",
-                    "Catedral",
-                    "Coche",
-                    "El Junquito",
-                    "El Paraíso",
-                    "El Recreo",
-                    "El Valle",
-                    "Candelaria",
-                    "La Pastora",
-                    "La Vega",
-                    "Macarao",
-                    "San Agustín",
-                    "San Bernardino",
-                    "San José",
-                    "San Juan",
-                    "San Pedro",
-                    "Santa Rosalía",
-                    "Santa Teresa",
-                    "Sucre (Catia)"
-                ]        
-            }
         ]
     }
 ]
