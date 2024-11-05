@@ -5,23 +5,23 @@
         %button.active(data-bs-slide-to="0" data-bs-target="#mainCarousel" type="button")
         %button(data-bs-slide-to="1" data-bs-target="#mainCarousel" type="button")
         %button(data-bs-slide-to="2" data-bs-target="#mainCarousel" type="button")
+        %button(data-bs-slide-to="3" data-bs-target="#mainCarousel" type="button")
     / The slideshow/carousel
-    .carousel-inner{style: 'background:white; height: 524px;'}
+    .carousel-inner{style: 'background:white;'}
         .carousel-item.active
             .text-center
-                = image_tag "01_main_services.jpg"
+                = image_tag "01_main_services.jpg", class: 'img-fluid'
         .carousel-item
             .text-center
-                = image_tag "02_main_services.jpg", width: '100%'
+                = image_tag "05_main_services.jpg", class: 'img-fluid'
         .carousel-item
             .text-center
-                = image_tag "03_main_services.jpg"
-        - if false
-            .carousel-item
-                .text-center
-                    = image_tag "example-services05-with-logo.png", width: '100%'
+                = image_tag "06_main_services.jpg", class: 'img-fluid'
+        .carousel-item
+            .text-center
+                = image_tag "03_main_services.jpg", class: 'img-fluid'
     / Left and right controls/icons
-    %button.carousel-control-prev(data-bs-slide="prev" data-bs-target="#mainCarousel" type="button" style= "color:red")
+    %button.carousel-control-prev(data-bs-slide="prev" data-bs-target="#mainCarousel" type="button")
         %span.carousel-control-prev-icon(aria-hidden="true")
         %span.visually-hidden Anterior
     %button.carousel-control-next(data-bs-slide="next" data-bs-target="#mainCarousel" type="button")

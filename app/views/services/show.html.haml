@@ -1,29 +1,30 @@
+.p-3
+  %p.float-end= image_tag @service.profile, class: 'img-fluid', width: '200'
+  %p
+    %b Nombre:
+    = @service.name
 
-%p= image_tag @service.profile, size: '35'
-%p
-  %b nombre:
-  = @service.name
+  = #Para ampliar información del servicio haga clíc aquí
+  %p 
+    %b Número de Contacto:
+    = number_to_phone @service.contact_phone, area_code: true, country_code: 58
+  %p 
+    %b Áreas:
+    = @service.areas.map(&:name).to_sentence
 
-%p 
-  %b Número de Contacto:
-  = number_to_phone @service.contact_phone, area_code: true, country_code: 58
-%p 
-  %b Áreas:
-  = @service.areas.map(&:name).to_sentence
+  %p
+    %b Ubicación:
+    = @service.location
 
-%p
-  %b Ubicación:
-  = @service.location
+  = link_to "#{services_path}?state=#{@service.location}", class: 'btn btn-sm btn-primary me-3' do
+    %i.fa.fa-chevron-left
+    = "Servicios de #{@service.location}"
 
-= link_to "#{services_path}?state=#{@service.location}", class: 'btn btn-sm btn-primary me-3' do
-  %i.fa.fa-chevron-left
-  = "Servicios de #{@service.location}"
+  = link_to edit_service_path(@service), class: 'btn btn-sm btn-primary me-2' do
+    %i.fa.fa-pencil
+    Editar
 
-= link_to edit_service_path(@service), class: 'btn btn-sm btn-primary me-2' do
-  %i.fa.fa-pencil
-  Editar
-
-= link_to new_service_path, class: 'btn btn-sm bg-success' do
-  %i.fa.fa-plus
-  Nuevo Servicio
-= render partial: '/layouts/versions_table', locals: {versions: @service.versions}
+  = link_to new_service_path, class: 'btn btn-sm bg-success' do
+    %i.fa.fa-plus
+    Nuevo Servicio
+  = render partial: '/layouts/versions_table', locals: {versions: @service.versions}
