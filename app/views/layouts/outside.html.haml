@@ -10,12 +10,13 @@
     = javascript_importmap_tags
     = favicon_link_tag 'own_resources/logo_icon.svg'
   %body.bg-primary-okyx 
-    .container-fluid.body
-      = render '/layouts/publish'
-      .bg-secondary-okyx.p-2.m-0
+    = render '/layouts/publish'
+    .bg-secondary-okyx.p-2.m-0
+    .container-fluid
       = render '/layouts/invite_nav'
-      .bg-secondary-okyx.p-2
-      = render "/layouts/flashes"
-      
-    = yield
+    .bg-secondary-okyx.p-2
+    = render "/layouts/flashes"
+    - clase = (params['search'].nil? and params['location'].nil? and params['area_id'].nil?) ? 'body' : 'container'
+
+    %div{class: clase}= yield
     = render '/layouts/footer'

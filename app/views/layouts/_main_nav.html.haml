@@ -2,9 +2,9 @@
   .container
     %a.navbar-brand{:href => session_dashboard_path}
       = image_tag 'own_resources/logo_name_2.svg', width: 120, class: 'm-0 p-0'
-    %button.navbar-toggler{"aria-controls" => "navbarTogglerDemo02", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarTogglerDemo02", "data-bs-toggle" => "collapse", :type => "button"}
+    %button.navbar-toggler{"aria-controls" => "navbarTogglerMain", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarTogglerMain", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
-    #navbarTogglerDemo02.collapse.navbar-collapse
+    #navbarTogglerMain.collapse.navbar-collapse
       %ul.navbar-nav.me-auto.mb-2.mb-lg-0
         - if user_signed_in?
           - if current_admin&.is_boss?

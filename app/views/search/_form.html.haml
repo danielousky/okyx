@@ -1,11 +1,18 @@
 = form_tag("/", class: '', method: :get) do
-  = hidden_field_tag :area_id, params[:area_id] if params[:area_id]
-  .p-2
+  =# hidden_field_tag :area_id, params[:area_id] if params[:area_id]
+  .p-2.flex-column.flex-md-row
     .row
-      .col-9.px-0
-        = text_field_tag :search, params[:search], {class: 'form-control', "aria-describedby" => "search-addon", "aria-label" => "Search", :placeholder => "Buscar Servicio", :type => "search"}
+      .col-3.px-0
+        = select_tag :location, options_for_select(Service.states, params[:location]), {prompt: "Ubicación...", selected: params[:location], class: 'form-select', "aria-describedby" => "search-addon", "aria-label" => "Location", :placeholder => "Ubicación"}
+      .col-3.px-0
+        = collection_select nil, :area_id, Area.all.order(:name), :id, :name, {prompt: "Categoría...", selected: params[:area_id]}, {class: 'form-select', "aria-describedby": "search-addon", "aria-label": "Location", placeholder: "Categoría"}        
+      .col-4.px-0
+        = text_field_tag :search, params[:search], {class: 'form-control', "aria-describedby" => "search-addon", "aria-label" => "Search", :placeholder => "Descripción del Servicio", :type => "search"}
       .col-1.px-0
         %button.btn.btn-success{"data-mdb-ripple-init" => "", :type => "submit"}
-          %i.fa.fa-search
-      .col-1
-        .btn.btn-warning.ms-2{onclick: "$('#categories').toggleClass('d-none')"} Categorías
+          %i.fa.fa-search.fa-beat-fade
+      - if false
+        .col-1
+          .btn.btn-warning.ms-2{onclick: "$('#categories').toggleClass('d-none')"}
+            Categorías
+            = icon('fa-solid', 'user-secret', class:"fa-7x, fa-shake")
