@@ -4,7 +4,7 @@
     = @services.count
     = t('activerecord.models.service.other')&.titleize.pluralize (@services.count)
     = "en #{params[:state]}"
-    = link_to 'Agregar Nuevo Servicio', "#{new_service_path}?state=#{params[:state]}", class: 'btn btn-lg btn-primary rounded-0'
+    = link_to 'Agregar Nuevo Servicio', "#{new_service_path}?state=#{params[:state]}", class: 'btn btn-lg btn-primary'
 
   = render partial: '/services/list'
 - else
