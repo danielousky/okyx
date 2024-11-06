@@ -25,7 +25,8 @@
     
     - # Categorías:
     = f.hint 'Seleccione tantas opciones como describan su servicio. (ctl ó cmd para selección multiple)'
-    = f.association :areas, wrapper: :floating_labels_select, input_html: {style: 'height:150px'}
+    =# f.association :areas, wrapper: :floating_labels_select, input_html: {style: 'height:150px'}
+    = f.association :areas, as: :check_boxes, input_html: {class: 'btn me-2 btn-outline-secondary'}#, label_html: { class: "btn btn-secondary" } #, wrappe
     
     - # Teléfono
     = f.hint 'Indique el número telefónico de contacto para el servicio'

@@ -1,25 +1,8 @@
-- if false
-  .container-fluid.px-3
-    %nav.navbar.bg-primary-okyx
-      %a.navbar-brand{:href => "/"}
-        = image_tag 'own_resources/logo_name_2.svg', width: 120, class: 'm-0 p-0'
-
-      = render partial: 'search/form'
-
-      = render '/layouts/session_links'
-  = render partial: '/areas/group_buttons'# if params[:search]
-%nav.navbar.navbar-expand-lg.bg-primary-okyx
-  .container-fluid
-    %a.navbar-brand{:href => "/"}
-      = image_tag 'own_resources/logo_name_2.svg', width: 120, class: 'img-fluid m-0 p-0'
-    
-    %button.navbar-toggler.float-end{"aria-controls" => "navbarTogglerInvite", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarTogglerInvite", "data-bs-toggle" => "collapse", :type => "button"}
-      %span.navbar-toggler-icon
-    #navbarTogglerInvite.collapse.navbar-collapse
-      %ul.navbar-nav.me-auto.mb-2.mb-lg-0
-        = render '/layouts/session_links'
-    = render partial: 'search/form'
-      
-          
-
-
+%nav.navbar.navbar-expand-lg.bg-orange-dark-okyx.justify-content-center.p-3
+  - if controller_name != 'sessions'
+    - # Link Login
+    = btn_tooltip_link_to 'Iniciar Sesión', 'Iniciar Sesión para Gestionar mis Servicios', 'fa fa-right-from-bracket', 'btn-sucess btn-sm btn-primary me-md-3', '/users/sign_in'
+  
+  - if controller_name != 'registrations'
+    - # Link Registration
+    = btn_tooltip_link_to 'Registrarse cómo proveedor de Servicios', 'Regístrate cómo Prestador de Servicios', 'fa fa-user-plus', 'btn-sucess btn-sm btn-success', '/users/sign_up'

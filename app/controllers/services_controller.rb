@@ -38,7 +38,7 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if continue and @service.save
-        format.html { redirect_to service_url(@service), notice: "Servicio registrado con éxito." }
+        format.html { redirect_to service_url(@service), notice: "Su solicitud de servicio fue gestionada exitosamente." }
         format.json { render :show, status: :created, location: @service }
       else
         format.html { render :new, status: :unprocessable_entity }

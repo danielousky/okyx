@@ -5,11 +5,3 @@
     = link_to destroy_user_session_path, data: {turbo_method: :delete}, class: 'float-end mx-3 btn btn-sm btn-outline-primary' do
       %i.fa.fa-right-from-bracket
       Cerrar sesión
-  - else
-    - if controller_name != 'sessions'
-      - # Link Login
-      = btn_tooltip_link_to 'Iniciar Sessión', 'Iniciar Sesión', 'fa fa-right-from-bracket', 'btn-sucess btn-sm btn-primary', '/users/sign_in'
-    
-    - if controller_name != 'registrations'
-      - # Link Registration
-      = btn_tooltip_link_to 'Registrarse', 'Registrarse', 'fa fa-user-plus fa-shake', 'btn-sucess btn-sm btn-success', '/users/sign_up'
