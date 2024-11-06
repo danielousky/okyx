@@ -19,6 +19,8 @@ class InicioController < ApplicationController
         flash[:danger] = "#{@services.count} #{'resultado'.pluralize(@services.count)} #{'encontrado'.pluralize(@services.count)}. Por favor, intente buscando con otra palabra clave"
       end
       @services = @services.limit(10)
+      # incrementar en uno todos los counter_views de los servicios
+      @services.update_all("counter_views = counter_views + 1")      
       
     else
       reset_session

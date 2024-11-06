@@ -43,7 +43,7 @@
             = "Creado hace #{distance_of_time_in_words(Time.zone.now, service.created_at)}"
           %li.list-inline-item.text-muted.text-small.mb-1.mb-sm-0
             %i.fas.fa-table.text-orange.me-2
-            65 Búsquedas
+            = service.counter_views+2
           - if service.contact_phone
             - name_phone = number_to_phone service.contact_phone, area_code: true, country_code: 58
             %li.list-inline-item
