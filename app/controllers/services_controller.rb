@@ -24,8 +24,6 @@ class ServicesController < ApplicationController
 
   # POST /services or /services.json
   def create
-  
-    @service = Service.new(service_params)
     continue = true
     if params[:user]
       @user = User.where(id: params[:user][:id]).first
@@ -34,11 +32,26 @@ class ServicesController < ApplicationController
         continue = @user.update(first_name: params[:user][:first_name], last_name: params[:user][:last_name])
       end
     end
+    
+    if (params[:service][:area_ids].include? '0')
 
+      @area = Area.new(name: params[:service_area_name])
+      if @area.save
+        indice = params[:service][:area_ids].index('0')
+        params[:service][:area_ids][indice] = @area.id
+
+        continue = true
+      else
+        continue = false
+        flash[:danger] = "No se pudo registrar la categoría: #{@area.errors.full_messages.to_sentence}"
+      end
+    end
+    
+    @service = Service.new(service_params)
 
     respond_to do |format|
       if continue and @service.save
-        format.html { redirect_to service_url(@service), notice: "Su solicitud de servicio fue gestionada exitosamente." }
+        format.html { redirect_to service_url(@service), notice: "Su servicio fue registrado exitosamente." }
         format.json { render :show, status: :created, location: @service }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -49,10 +62,25 @@ class ServicesController < ApplicationController
 
   # PATCH/PUT /services/1 or /services/1.json
   def update
+
+    if (params[:service][:area_ids].include? '0')
+
+      @area = Area.new(name: params[:service_area_name])
+      if @area.save
+        indice = params[:service][:area_ids].index('0')
+        params[:service][:area_ids][indice] = @area.id
+
+        continue = true
+      else
+        continue = false
+        flash[:danger] = "No se pudo registrar la categoría: #{@area.errors.full_messages.to_sentence}"
+      end
+    end    
+
     respond_to do |format|
-      if @service.update(service_params)
+      if continue and @service.update(service_params)
         
-        format.html { redirect_to service_url(@service), notice: "Servicio Actualizado." }
+        format.html { redirect_to service_url(@service), notice: "Su servicio actualizado con éxito." }
         format.json { render :show, status: :ok, location: @service }
       else
         format.html { render :edit, status: :unprocessable_entity }

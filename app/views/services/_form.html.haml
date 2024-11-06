@@ -21,13 +21,19 @@
     - # Imágen:
     %div{style: 'background-color:#F4F4F4'}
       = f.hint 'Agregue el logo del servicio o foto de la persona que ofrece sus servicios personales'
-      = f.input :profile, label_html: {class: 'p-2', style: 'font-size: 13px;color: grey;'}, input_html: {class: 'mb-4'}, wrapper_html: {class: 'border'}
+      = f.input :profile, label_html: {class: 'p-2', style: 'font-size: 13px;color: grey;'}, input_html: {class: 'mb-0'}, wrapper_html: {class: 'border'}
+      %img#image_preview.img-fluid.p-2{src: '', style: 'display:none; max-width: 100px; max-height: 100px;'}
     
     - # Categorías:
-    = f.hint 'Seleccione tantas opciones como describan su servicio. (ctl ó cmd para selección multiple)'
+    = f.hint 'Seleccione tantas opciones como describan su servicio.'
     =# f.association :areas, wrapper: :floating_labels_select, input_html: {style: 'height:150px'}
-    = f.association :areas, as: :check_boxes, input_html: {class: 'btn me-2 btn-outline-secondary'}#, label_html: { class: "btn btn-secondary" } #, wrappe
-    
+    = f.association :areas, as: :check_boxes, input_html: {class: 'btn me-2 btn-outline-secondary'} #, label_html: { class: "btn btn-secondary" } #, wrappe
+    .form-check.mb-3
+      %input#service_area_ids_0.form-check-input.check_boxes.btn.me-2.btn-outline-secondary{type: "checkbox", value: 0, name: "service[area_ids][]"}
+      %label.form-check-label.collection_check_boxes{for: "service_area_ids_0"} 
+        #service_area_label_other Otro
+        = text_field_tag 'service_area_name', params[:service_area_name], class: 'form-control d-none required', required: true
+
     - # Teléfono
     = f.hint 'Indique el número telefónico de contacto para el servicio'
     .row
@@ -63,7 +69,45 @@
           = f.input :conditions_accepted, label: "Declaro que acepto los términos y condiciones expuestas <a class='link' data-bs-target='#legal_conditions' data-bs-toggle='modal'>aquí</a>".html_safe, wrapper_html: {class: 'p-3'}
   
   .form-actions
-    = f.button :submit, class: 'btn btn-success'
+    = f.button :submit, class: 'btn btn-success disabled', data: {disable_with: 'Guardando...'}, id: 'submit_service'
+
+:javascript
+  // Encontrar evento onclick del elemento service_area_other
+  // Uncaught SyntaxError: Identifier 'other' has already been declared
+  document.addEventListener('DOMContentLoaded', function () {
+    const other = document.getElementById('service_area_ids_0');
+    // Mostrar campo de texto para el nombre de la categoría
+    other.addEventListener('click', () => {
+      document.getElementById('service_area_name').classList.toggle('d-none');
+      document.getElementById('service_area_label_other').classList.toggle('d-none');
+
+    });
+    
+    // Preview de la imagen
+    const image_preview = document.getElementById('service_profile');
+    image_preview.addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.getElementById('image_preview');
+          img.src = e.target.result;
+          img.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
+    let conditions_accepted = document.getElementById('service_conditions_accepted');
+    conditions_accepted.addEventListener('change', function(event) {
+      const button = document.getElementById('submit_service');
+      button.classList.toggle('disabled');
+    });
+
+  });
+  
+
+
 
 
 
