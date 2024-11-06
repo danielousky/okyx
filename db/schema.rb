@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_06_202421) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_06_232051) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -98,6 +98,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_06_202421) do
     t.integer "counter_views", default: 0
     t.integer "counter_phone", default: 0
     t.integer "counter_links", default: 0
+    t.string "secundary_contact_phone"
+    t.string "secundary_contact_phone_code"
     t.index ["client_id"], name: "index_services_on_client_id"
   end
 

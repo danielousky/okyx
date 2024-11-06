@@ -295,6 +295,8 @@ es:
         profile: Imagen del Servicio
         contact_phone_code: Código 
         contact_phone: Número Telefónico
+        secundary_contact_phone_code: Código 
+        secundary_contact_phone: Número Telefónico Secundario        
         link: Enlace
         conditions_accepted: "Términos y condiciones"
       user:
