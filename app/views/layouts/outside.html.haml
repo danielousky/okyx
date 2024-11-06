@@ -18,8 +18,12 @@
     = render "/layouts/flashes"
     - clase = (params['search'].nil? and params['location'].nil? and params['area_id'].nil?) ? '' : 'container'
 
-    .mb-5{class: clase}= yield
+    %div{class: clase}= yield
     
-    .mt-5.fixed-bottom
+    %br
+    %br
+    %br
+    %br
+    .fixed-bottom
       = render '/layouts/invite_nav'
       = render '/layouts/footer'
