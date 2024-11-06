@@ -1,10 +1,17 @@
 class AreasController < ApplicationController
   before_action :set_area, only: %i[ show edit update destroy ]
-  before_action :current_sing_in_superadmin
+  before_action :current_sing_in_superadmin, except: %i[index]
+  skip_before_action :authenticate_user!, only: [ :index ]
 
   # GET /areas or /areas.json
   def index
-    @areas = Area.all
+    if params[:location].present?
+
+      @areas = Area.joins(:services).where('services.location': params[:location]).order(:name).uniq
+    else
+      @areas = Area.none
+    end
+    render json: @areas    
   end
 
   # GET /areas/1 or /areas/1.json

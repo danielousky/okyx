@@ -1,14 +1,14 @@
 %nav.navbar.bg-primary-okyx
-  = form_tag("/", class: 'w-100', method: :get) do
+  = form_tag("/", class: 'w-100', method: :get, data: { controller: "location" }) do
     .container-fluid.flex-column.flex-md-row
       .row.row-md-auto.p-1
         .col-12.col-md-1.me-4.mb-2.text-center.text-md-start
           %a.navbar-brand{:href => "/"}
             = image_tag 'own_resources/logo_name_2.svg', width: 120, class: 'img-fluid m-0 p-0'
         .col-12.col-md-2.px-0
-          = select_tag :location, options_for_select(Service.states, params[:location]), {prompt: "Ubicación...", selected: params[:location], class: 'form-select', "aria-describedby" => "search-addon", "aria-label" => "Location", :placeholder => "Ubicación"}
+          = select_tag :location, options_for_select(Service.states, params[:location]), {prompt: "Ubicación...", selected: params[:location], class: 'form-select', "aria-describedby" => "search-addon", "aria-label" => "Location", :placeholder => "Ubicación", 'data-action': "change->location#filterAreas" }
         .col-12.col-md-3.px-0
-          = collection_select nil, :area_id, Area.all.order(:name), :id, :name, {prompt: "Categoría...", selected: params[:area_id]}, {class: 'form-select', "aria-describedby": "search-addon", "aria-label": "Location", placeholder: "Categoría"}
+          = collection_select nil, :area_id, Area.all.order(:name), :id, :name, {prompt: "Categoría...", selected: params[:area_id]}, {class: 'form-select', "aria-describedby": "search-addon", "aria-label": "Location", placeholder: "Categoría", 'data-location-target': "areaSelect"}
         .col-12.col-md-5.px-0
           = text_field_tag :search, params[:search], {class: 'form-control', "aria-describedby" => "search-addon", "aria-label" => "Search", :placeholder => "Dato adicional del servicio...", :type => "search"}
         .col-12.col-md-auto.px-0
