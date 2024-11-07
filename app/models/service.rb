@@ -40,7 +40,11 @@ class Service < ApplicationRecord
   # Associations:
   has_and_belongs_to_many :areas
   accepts_nested_attributes_for :areas, reject_if: ->(attributes){ attributes['name'].blank? }, allow_destroy: true
+  
   belongs_to :client, optional: true
+  
+  has_many :links
+  accepts_nested_attributes_for :links, allow_destroy: true
 
   # Variables:
   has_rich_text :description
@@ -70,6 +74,14 @@ class Service < ApplicationRecord
   scope :by_state, -> (state) {where(location: state)}
   
   # Functions:
+  def complete_phone
+    "#{contact_phone_code}#{contact_phone}"
+  end
+
+  def complete_secundary_phone
+    "#{secundary_contact_phone_code}#{secundary_contact_phone}"
+  end
+
   def self.venezuela
       require 'json'
       file = File.read("#{Rails.root}/public/venezuela.json")

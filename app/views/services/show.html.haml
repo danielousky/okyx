@@ -7,10 +7,20 @@
   = #Para ampliar información del servicio haga clíc aquí
   %p 
     %b Número de Contacto:
-    = number_to_phone @service.contact_phone, area_code: true, country_code: 58
+  %p 
+    %b Principal:
+    = number_to_phone @service.complete_phone, area_code: true, country_code: 58
+  %p 
+    %b Secundario:
+    = number_to_phone @service.complete_secundary_phone, area_code: true, country_code: 58
+    
   %p 
     %b Áreas:
     = @service.areas.map(&:name).to_sentence
+
+  %p 
+    %b Enlaces:
+    = @service.links.map(&:to_link_with_icon).join.html_safe
 
   %p
     %b Ubicación:

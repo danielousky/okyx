@@ -1,0 +1,12 @@
+.nested-fields
+    .row.g-3
+        = f.input :type_link, required: :required, collection: Link.type_links.keys, wrapper: :floating_labels_select, wrapper_html: {class: 'col-3 pe-0'}, label_html: {class: 'ms-2 mt-1 pt-1 pb-0'}
+        = f.input :url, wrapper: :floating_labels_form, wrapper_html: {class: 'col-7 pe-0'}, label_html: {class: 'ms-2 mt-1 pt-1 pb-0'}
+        = f.hidden_field :_destroy, class: 'destroy-field'
+        
+        .col-auto.align-middle
+            - if f.object.new_record?
+                %a.fa.fa-trash.btn.btn-danger{'data-turbo': false, onclick: "remove_fields_new(this)"}
+            - else
+                %a.fa.fa-trash.remove_fields.btn.btn-danger{'data-toggle': "button", href: "#", role: "button"}
+        

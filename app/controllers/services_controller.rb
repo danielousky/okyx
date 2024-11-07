@@ -62,8 +62,8 @@ class ServicesController < ApplicationController
 
   # PATCH/PUT /services/1 or /services/1.json
   def update
-
-    if (params[:service][:area_ids].include? '0')
+    continue = true
+    if (params[:service][:area_ids].include? '0') #Nueva area
 
       @area = Area.new(name: params[:service_area_name])
       if @area.save
@@ -107,6 +107,6 @@ class ServicesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def service_params
-      params.require(:service).permit(:condition, :code, :name, :details, :link, :contact_phone, :contact_phone_code, :location, :profile, :conditions_accepted, area_ids: [])
+      params.require(:service).permit(:condition, :code, :name, :details, :link, :contact_phone, :contact_phone_code, :secundary_contact_phone_code, :secundary_contact_phone, :location, :profile, :conditions_accepted, area_ids: [], links_attributes: [:id, :url, :type_link, :_destroy])
     end
 end

@@ -284,6 +284,9 @@ es:
     attributes:
       area:
         name: Nombre
+      link:
+        url: Enlace
+        type_link: Tipo
       service:
         condition: Condición
         code: CI o RIF
