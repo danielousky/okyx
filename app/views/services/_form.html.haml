@@ -72,7 +72,7 @@
           = f.input :conditions_accepted, label: "Declaro que acepto los términos y condiciones expuestas <a class='link' data-bs-target='#legal_conditions' data-bs-toggle='modal'>aquí</a>".html_safe, wrapper_html: {class: 'p-3'}
   
   .form-actions
-    = f.button :submit, class: 'btn btn-success disabled', data: {disable_with: 'Guardando...'}, id: 'submit_service'
+    = f.button :submit, class: 'btn btn-success', data: {disable_with: 'Guardando...'}, id: 'submit_service'
 
 :javascript
   // Encontrar evento onclick del elemento service_area_other
