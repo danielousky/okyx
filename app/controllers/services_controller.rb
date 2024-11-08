@@ -25,6 +25,19 @@ class ServicesController < ApplicationController
   # POST /services or /services.json
   def create
     continue = true
+    @service = Service.new(service_params)
+    
+    if (params[:service][:area_ids].include? '0')
+      @area = Area.new(name: params[:service_area_name])
+      if @area.save
+        @service.area_id = @area.id        
+        continue = true
+      else
+        continue = false
+        flash[:danger] = "No se pudo registrar la categoría: #{@area.errors.full_messages.to_sentence}"
+      end
+    end
+
     if params[:user]
       @user = User.where(id: params[:user][:id]).first
       @service.client_id = @user&.client&.id
@@ -32,22 +45,6 @@ class ServicesController < ApplicationController
         continue = @user.update(first_name: params[:user][:first_name], last_name: params[:user][:last_name])
       end
     end
-    
-    if (params[:service][:area_ids].include? '0')
-
-      @area = Area.new(name: params[:service_area_name])
-      if @area.save
-        indice = params[:service][:area_ids].index('0')
-        params[:service][:area_ids][indice] = @area.id
-
-        continue = true
-      else
-        continue = false
-        flash[:danger] = "No se pudo registrar la categoría: #{@area.errors.full_messages.to_sentence}"
-      end
-    end
-    
-    @service = Service.new(service_params)
 
     respond_to do |format|
       if continue and @service.save

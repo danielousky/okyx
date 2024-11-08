@@ -30,7 +30,7 @@
     - # Categorías:
     = f.hint 'Seleccione tantas opciones como describan su servicio.'
     =# f.association :areas, wrapper: :floating_labels_select, input_html: {style: 'height:150px'}
-    = f.association :areas, as: :check_boxes, input_html: {class: 'btn me-2 btn-outline-secondary'} #, label_html: { class: "btn btn-secondary" } #, wrappe
+    = f.association :areas, as: :check_boxes, collection: Area.all.order(:name), input_html: {class: 'btn me-2 btn-outline-secondary'} #, label_html: { class: "btn btn-secondary" } #, wrappe
     .form-check.mb-3
       %input#service_area_ids_0.form-check-input.check_boxes.btn.me-2.btn-outline-secondary{type: "checkbox", value: 0, name: "service[area_ids][]"}
       %label.form-check-label.collection_check_boxes{for: "service_area_ids_0"} 

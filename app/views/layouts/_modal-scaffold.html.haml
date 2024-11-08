@@ -2,7 +2,13 @@
 .modal.fade{"aria-hidden": true, tabindex: "-1", id: id}
   .modal-dialog{class: long}
     .modal-content
-      .text-center.pt-3
-        %h5=title title
+      .modal-header
+        .modal-title= title
+        %button.btn-close{"type": "button", "data-bs-dismiss": "modal", "aria-label": "Close"}
+      .modal-body
+        = content.html_safe      
       .modal-body
         = content.html_safe
+      .modal-footer
+        %button.translate-middle.btn.btn-info.mt-3{"type": "button", "data-bs-dismiss": "modal"}
+          Cerrar
