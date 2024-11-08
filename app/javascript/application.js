@@ -10,7 +10,15 @@ import "bootstrap"
 import "trix"
 import "@rails/actiontext"
 
-document.addEventListener('DOMContentLoaded', function () {
+function copyToClipboard(text) {
+	navigator.clipboard.writeText(text).then(function() {
+	  alert('Número copiado al portapapeles');
+	}, function(err) {
+	  console.error('Error al copiar al portapapeles: ', err);
+	});
+}
+
+document.addEventListener('turbo:load', function () {
 
 	$('.onlyOneCharacter').on('input', function(evt) {
 		var node = $(this);

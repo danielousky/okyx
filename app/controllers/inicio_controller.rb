@@ -13,10 +13,10 @@ class InicioController < ApplicationController
         if @services.count > 20
           flash[:success] = " ¡Más de 20 resultados encontrados! Con el filtro, puedes ser más específico para encontrar el servicio que necesitas!"
         else
-          flash[:success] = "#{@services.count} #{'resultado'.pluralize(@services.count)} #{'encontrado'.pluralize(@services.count)}!"
+          flash[:success] = "¡#{@services.count} #{'resultado'.pluralize(@services.count)} #{'encontrado'.pluralize(@services.count)}!"
         end
       else
-        flash[:danger] = "#{@services.count} #{'resultado'.pluralize(@services.count)} #{'encontrado'.pluralize(@services.count)}. Por favor, intente buscando con otra palabra clave"
+        flash[:danger] = "Ningún resultado encontrado. Por favor, intente buscando con otra palabra clave"
       end
       @services = @services.limit(10)
       # incrementar en uno todos los counter_views de los servicios

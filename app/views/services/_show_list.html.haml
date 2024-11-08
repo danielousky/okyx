@@ -44,16 +44,38 @@
           %li.list-inline-item.text-muted.text-small.mb-1.mb-sm-0
             %i.fas.fa-table.text-orange.me-2
             = service.counter_views+2
+          / Phone
           - if service.contact_phone
-            - name_phone = number_to_phone service.contact_phone, area_code: true, country_code: 58
+            - name_phone = number_to_phone service.complete_phone, area_code: true, country_code: 58
             %li.list-inline-item
               = link_to 'javascript:void(0)', onclick: "$('#phone#{service.id}').removeClass('d-none d-block'); $(this).parent().addClass('d-none')", class: 'phone' do
                 %i.fas.fa-phone.text-success.me-2
-            %li.list-inline-item.d-none.badge.text-success{id: "phone#{service.id}"}              
-              = link_to "https://wa.me/58#{service.contact_phone}?text=Hola,%20te%20encontré%20por%20Okyx.%20Tengo%20interés%20en...", {target: '_blank', referrerpolicy: "origin-when-cross-origin", class: 'btn btn-sm btn-success'} do
+            
+            %li.list-inline-item.d-none.badge.text-success{id: "phone#{service.id}"}
+              - ws_msg = "Hola,%20te%20encontré%20por%20Okyx.%20Tengo%20interés%20en tu servicio"
+
+              = link_to "https://wa.me/+58#{service.complete_phone}?text=#{ws_msg}", {target: '_blank', referrerpolicy: "origin-when-cross-origin", class: 'btn btn-sm btn-success mx-2'} do
                 %i.fa-brands.fa-whatsapp
                 = name_phone
-          - if service.link
+              = link_to "tel:#{service.complete_phone}", class: 'btn btn-sm btn-primary' do
+                %i.fas.fa-phone
+
+              - if false 
+                %button.btn.btn-sm.btn-secondary{onclick: "copyToClipboard('#{service.complete_phone.tr('^A-Z0-9 ', "")}')"}
+                  %i.fas.fa-copy
+
+              - unless service.secundary_contact_phone.blank?
+                - name_secondary_phone = service.secundary_contact_phone
+                = link_to "https://wa.me/+58#{service.complete_secundary_phone}?text=#{ws_msg}", {target: '_blank', referrerpolicy: "origin-when-cross-origin", class: 'btn btn-sm btn-success'} do
+                  %i.fa-brands.fa-whatsapp
+                  = name_secondary_phone
+
+                = link_to "tel:#{service.secundary_contact_phone}", class: 'btn btn-sm btn-primary' do
+                  %i.fas.fa-phone
+              
+
+          / Links
+          - unless service.link.blank?
             %li.list-inline-item
               = link_to 'javascript:void(0)', onclick: "$('#link#{service.id}').toggleClass('d-none d-block'); $(this).parent().addClass('d-none')" do
                 %i.fas.fa-link.text-primary.me-2              

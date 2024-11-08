@@ -1,3 +1,17 @@
 
-%h1.text-center.align-middle.text-light.p-3.mb-0.justify-content-md-center
-    = image_tag "banners/campaigns/start/banner_okyx.gif", class: 'img-fluid'
+.text-center.align-middle.mb-0.justify-content-md-center
+    #MainBanner.carousel.carousel-dark.slide(data-bs-ride="carousel")
+        / The slideshow/carousel
+        .carousel-inner
+            - 11.times do |i|
+                - active = i == 0 ? 'active' : ''
+                .carousel-item{class: active}
+                    .text-center
+                        %a{href: '/users/sign_up'}
+                            = image_tag "banners/campaigns/start/okyx/0#{i+1}_banner.jpeg", class: 'img-fluid'
+            .carousel-item
+                .text-center
+                    = image_tag "banners/campaigns/start/outsite/moros_en_la_costa.jpeg", class: 'img-fluid'
+            .carousel-item
+                .text-center
+                    = image_tag "banners/campaigns/start/outsite/orquidea_digital.jpeg", class: 'img-fluid'
