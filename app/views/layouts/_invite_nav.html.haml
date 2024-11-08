@@ -1,8 +1,11 @@
-%nav.navbar.navbar-expand-lg.bg-orange-dark-okyx.justify-content-center.p-3
-  - if controller_name != 'sessions'
-    - # Link Login
-    = btn_tooltip_link_to 'Iniciar Sesión', 'Iniciar Sesión para Gestionar mis Servicios', 'fa fa-right-from-bracket', 'btn-sucess btn-sm btn-primary me-md-3', '/users/sign_in'
+.navbar.bg-success.opacity-75.justify-content-center.p-3
   
-  - if controller_name != 'registrations'
+  - if controller_name != 'registrations' or controller_name != 'sessions'  
     - # Link Registration
-    = btn_tooltip_link_to 'Registrarse cómo proveedor de Servicios', 'Regístrate cómo Prestador de Servicios', 'fa fa-user-plus', 'btn-sucess btn-sm btn-success', '/users/sign_up'
+    %div
+      = "Registrarse cómo proveedor de servicios "
+      = link_to 'Aquí', '/users/sign_up'
+      = "o "
+      = link_to 'Inicia sessión', '/users/sign_in'
+      = "para gestionar tus servicios ya registrados"
+      =# render '/layouts/sign_in_btn'

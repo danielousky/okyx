@@ -1,4 +1,4 @@
-.container-fluid
+.container-fluid.mb-5
   .container
     = title 'Iniciar Sesión'
     = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -15,4 +15,4 @@
         = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
       .form-actions
         = f.button :submit, "Entrar", class: 'btn btn-primary'
-    =# render "devise/shared/links"
+    = render "devise/shared/links"

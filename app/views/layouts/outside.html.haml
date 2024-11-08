@@ -9,22 +9,17 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
     = favicon_link_tag 'own_resources/logo_icon.svg'
-  %body.bg-primary-okyx{style: 'height: 50rem;'}
-    = render '/layouts/publish'
-    .bg-secondary-okyx.p-2.m-0
+  %body.bg-primary-okyx
+    
+    
+    %nav.navbar.justify-content-center.sticky-top.bg-secondary-okyx.py-2
+      .bg-primary-okyx.w-100.px-0.py-1
+        .mb-2= render '/layouts/publish'
+        = render '/layouts/search_nav'
     .container-fluid
-      = render '/layouts/search_nav'
-    .bg-secondary-okyx.p-2
-    = render "/layouts/flashes"
+      = render "/layouts/flashes"
     - clase = (params['search'].nil? and params['location'].nil? and params['area_id'].nil?) ? '' : 'container'
 
     %div{class: clase}= yield
     
-    %br
-    %br
-    %br
-    %br
-    %br
-    .fixed-bottom
-      = render '/layouts/invite_nav'
-      = render '/layouts/footer'
+    = render '/layouts/footer'
