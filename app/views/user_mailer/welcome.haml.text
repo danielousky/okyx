@@ -1,0 +1,3 @@
+User#welcome
+= @user.name
+Hola mundo

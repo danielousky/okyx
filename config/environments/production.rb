@@ -6,6 +6,8 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  config.action_mailer.default_url_options = { host: "okyx.global" }
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -15,6 +17,17 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:            ENV['PROVIDER_EMAIL_SERVER'],
+    port:               ENV['PROVIDER_EMAIL_PORT'],
+    domain:             ENV['PROVIDER_EMAIL_ADDRESS'],
+    user_name:          ENV['PROVIDER_EMAIL_USERNAME'],
+    password:           ENV['PROVIDER_EMAIL_PASSWORD'],
+    authentication:     'plain',
+    enable_starttls_auto: true
+  }
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
