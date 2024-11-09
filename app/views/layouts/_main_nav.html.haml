@@ -1,6 +1,7 @@
-%nav.navbar.navbar-expand-lg.bg-primary-okyx
+%nav.navbar.navbar-expand-lg.bg-primary-okyx.sticky-top
   .container
-    %a.navbar-brand{:href => session_dashboard_path}
+    - link_to = current_user ? session_dashboard_path : root_path
+    %a.navbar-brand{:href => link_to}
       = image_tag 'own_resources/logo_name_2.svg', width: 120, class: 'm-0 p-0'
     %button.navbar-toggler{"aria-controls" => "navbarTogglerMain", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarTogglerMain", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
